@@ -109,7 +109,7 @@ function SetupTooltips(panel) {
 							SetupTooltips(ability.FindChildTraverse("AbilityImage"))
 
 							ability.FindChildTraverse("AbilityImage").SetPanelEvent("onmouseactivate", (function () {
-								$("#Abilities").FindChildTraverse("AbilitySlot" + abilitySlot.i).FindChildTraverse("AbilityImage").abilityname = ability.FindChildTraverse("AbilityImage").abilityname;
+								// $("#Abilities").FindChildTraverse("AbilitySlot" + abilitySlot.i).FindChildTraverse("AbilityImage").abilityname = ability.FindChildTraverse("AbilityImage").abilityname;
 								GameEvents.SendCustomGameEventToServer( "reflex_update_skill", {"slot" : abilitySlot.i, "abilityname" : ability.FindChildTraverse("AbilityImage").abilityname});
 								$("#AbilityMenuRoot").AddClass("Hidden");
 								$("#AbilityMenuRoot").currentSlot = -1;
@@ -119,15 +119,16 @@ function SetupTooltips(panel) {
 					}
 					$("#AbilityMenuRoot").RemoveClass("Hidden");
 				}));
-			} else {
+			} //else {
 				CustomNetTables.SubscribeNetTableListener("abilities", (function (table_name, key, data) {
 					for (var i = 0; i < 5; i++) {
 						if (data[i.toString()]) {
+							$.Msg(i.toString(), data[i.toString()]);
 							$("#Abilities").FindChildTraverse("AbilitySlot" + i).FindChildTraverse("AbilityImage").abilityname = data[i.toString()];
 						}
 					}
 				}));
-			}
+			//}
 		})();
 	}
 
@@ -135,7 +136,6 @@ function SetupTooltips(panel) {
 		var gameTable = {};
 		for (var i = 0; i < 5; i++) {
 			gameTable[i.toString()] = $("#Abilities").FindChildTraverse("AbilitySlot" + i).FindChildTraverse("AbilityImage").abilityname;
-			$.Msg(gameTable[i]);
 		}
 		gameTable["randomSkills"] = $("#RandomSkills").enabled;
 		gameTable["anomalies"] = $("#Anomalies").enabled;

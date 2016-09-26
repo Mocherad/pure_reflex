@@ -110,7 +110,7 @@ function NinjaClaasicGameMode:InitGameMode()
   goodGuysScore = 0
   badGuysScore = 0
   timeToStart = 400
-  GameRules:SetHeroSelectionTime(60)
+  GameRules:SetHeroSelectionTime(120)
   GameRules:SetPreGameTime(16)
   GameRules:GetGameModeEntity():SetThink("GameStartMsg", self, 0)
   GameRules:SetSameHeroSelectionEnabled(true)
@@ -138,7 +138,7 @@ function NinjaClaasicGameMode:InitGameMode()
 
   GameRules:SetCustomGameSetupTimeout( 9999 )
 
-  CustomNetTables:SetTableValue("abilities","abilities",{"0" = "", "1" = "", "2" = "", "3" = "", "4" = ""})
+  CustomNetTables:SetTableValue("abilities","abilities",{})
 
   CustomGameEventManager:RegisterListener("reflex_start_game", Dynamic_Wrap(NinjaClaasicGameMode, 'FinishGameSetup'))
   CustomGameEventManager:RegisterListener("reflex_update_skill", Dynamic_Wrap(NinjaClaasicGameMode, 'UpdateSkill'))
@@ -236,7 +236,7 @@ function NinjaClaasicGameMode:Time ()
         else
           local player = nil
             for i = 0, 9, 1 do
-              if PlayerResource:GetPlayer(i) ~= nil then
+              if PlayerResource:GetPlayer(i) ~= nil and player:GetAssignedHero() then
               player = PlayerResource:GetPlayer(i)
               local hero = player:GetAssignedHero()
               hero:AddNewModifier(hero, nil, "modifier_invulnerable", { duration = 6 })
