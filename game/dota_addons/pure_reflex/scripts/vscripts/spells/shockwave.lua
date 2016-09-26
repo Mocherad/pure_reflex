@@ -62,7 +62,6 @@ local projectile = {
   OnTreeHit = function(self, tree)
   end,
   OnFinish = function(self, pos)
-  
   UTIL_Remove(dummys)
   end,
   UnitTest = function(self, unit) return unit:GetUnitName() ~= "npc_dummy_unit" and unit:GetTeamNumber() ~= caster:GetTeamNumber() or unit:GetUnitName() == "npc_dummy_unit" end,
@@ -95,6 +94,4 @@ Timers:CreateTimer( 0.3, function()
     projectile:Destroy(projID)
   end
 end )
-
-
 end

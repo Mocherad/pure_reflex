@@ -13,6 +13,8 @@ BUILD = {}
 RANDOM_SKILLS = false
 ANOMALIES = false
 
+local noData = true
+
 function Precache( context )
 
   PrecacheUnitByNameSync("npc_dota_hero_juggernaut", context)
@@ -25,7 +27,6 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_dota_hero_legion_commander", context)  
   PrecacheUnitByNameSync("npc_dota_hero_earth_spirit", context)  
   PrecacheUnitByNameSync("npc_dota_hero_bloodseeker", context)  
-   PrecacheUnitByNameSync("npc_dota_hero_antimage", context)  
   
   PrecacheResource( "particle","particles/units/heroes/hero_elder_titan/elder_titan_earth_splitter.vpcf", context) 
 
@@ -109,7 +110,7 @@ function NinjaClaasicGameMode:InitGameMode()
   goodGuysScore = 0
   badGuysScore = 0
   timeToStart = 400
-  GameRules:SetHeroSelectionTime(0)
+  GameRules:SetHeroSelectionTime(60)
   GameRules:SetPreGameTime(16)
   GameRules:GetGameModeEntity():SetThink("GameStartMsg", self, 0)
   GameRules:SetSameHeroSelectionEnabled(true)
@@ -137,7 +138,10 @@ function NinjaClaasicGameMode:InitGameMode()
 
   GameRules:SetCustomGameSetupTimeout( 9999 )
 
+  CustomNetTables:SetTableValue("abilities","abilities",{"0" = "", "1" = "", "2" = "", "3" = "", "4" = ""})
+
   CustomGameEventManager:RegisterListener("reflex_start_game", Dynamic_Wrap(NinjaClaasicGameMode, 'FinishGameSetup'))
+  CustomGameEventManager:RegisterListener("reflex_update_skill", Dynamic_Wrap(NinjaClaasicGameMode, 'UpdateSkill'))
 
   ListenToGameEvent('dota_player_pick_hero', Dynamic_Wrap(NinjaClaasicGameMode, 'HeroPicked'), self)
   ListenToGameEvent('dota_player_gained_level', Dynamic_Wrap(NinjaClaasicGameMode, 'HeroGainedLevel'), self)
@@ -148,10 +152,16 @@ function NinjaClaasicGameMode:InitGameMode()
   ListenToGameEvent("game_rules_state_change", Dynamic_Wrap(NinjaClaasicGameMode, 'OnGameRulesStateChange'), self)
   ListenToGameEvent("player_reconnected", Dynamic_Wrap(NinjaClaasicGameMode, 'OnPlayerReconnected'), self)
 
-  ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(NinjaClaasicGameMode, 'CreateHeroes'), self)
+  -- ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(NinjaClaasicGameMode, 'CreateHeroes'), self)
 
   self.vUserIds = {}
   self.splIds = {}
+end
+
+function NinjaClaasicGameMode:UpdateSkill(args)
+  local abilities = CustomNetTables:GetTableValue("abilities","abilities")
+  abilities[tostring(args.slot)] = args.abilityname
+  CustomNetTables:SetTableValue("abilities","abilities",abilities)
 end
 
 function NinjaClaasicGameMode:FinishGameSetup(args)
@@ -162,7 +172,9 @@ function NinjaClaasicGameMode:FinishGameSetup(args)
   RANDOM_SKILLS = args.randomSkills
   ANOMALIES = args.anomalies
 
-  GameRules:FinishCustomGameSetup()
+  noData = false
+
+  NinjaClaasicGameMode:CreateHeroes()
 end
 
 function NinjaClaasicGameMode:InitHero(hero)
@@ -189,24 +201,24 @@ end
 function NinjaClaasicGameMode:CreateHeroes()
   --print("Game State Changed: " .. GameRules:State_Get())
   --print("Hero Selection State: " .. DOTA_GAMERULES_STATE_HERO_SELECTION)
-  if GameRules:State_Get() == 3 then
-    print("Entered IF")
-    for i = 0, 9, 1 do
-      if PlayerResource:GetPlayer(i) ~= nil then
-        player = PlayerResource:GetPlayer(i)
-        local team = player:GetTeamNumber() 
-        print("team ".. team)
-        if team == 3 then 
-          hero = CreateHeroForPlayer('npc_dota_hero_phantom_assassin',player)
-          NinjaClaasicGameMode:InitHero(hero)
-        else
-          hero = CreateHeroForPlayer('npc_dota_hero_juggernaut',player)
-          NinjaClaasicGameMode:InitHero(hero)
-        end
-        hero:SetHasInventory( false )
+  -- if GameRules:State_Get() == 3 then
+    -- print("Entered IF")
+  for i = 0, 9, 1 do
+    if PlayerResource:GetPlayer(i) ~= nil then
+      player = PlayerResource:GetPlayer(i)
+      local team = player:GetTeamNumber() 
+      print("team ".. team)
+      if team == 3 then 
+        hero = CreateHeroForPlayer('npc_dota_hero_phantom_assassin',player)
+        NinjaClaasicGameMode:InitHero(hero)
+      else
+        hero = CreateHeroForPlayer('npc_dota_hero_juggernaut',player)
+        NinjaClaasicGameMode:InitHero(hero)
       end
+      hero:SetHasInventory( false )
     end
   end
+  -- end
 end
 
 function NinjaClaasicGameMode:GameStartMusic ()
@@ -248,10 +260,16 @@ end
 
 function NinjaClaasicGameMode:OnGameRulesStateChange(keys)
   if GameRules:State_Get() == DOTA_GAMERULES_STATE_HERO_SELECTION then
-	timeToStart = 15
-  DeepPrintTable(keys)
-  GameRules:SendCustomMessage("#Welcome", 0, 0)
-	GameRules:GetGameModeEntity():SetThink("Respawn", self, 15)
+  	timeToStart = 15
+    DeepPrintTable(keys)
+    GameRules:SendCustomMessage("#Welcome", 0, 0)
+  	GameRules:GetGameModeEntity():SetThink("Respawn", self, 15)
+  elseif GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS and noData == true then
+    for i = 0, 9, 1 do
+      if PlayerResource:GetPlayer(i) ~= nil and GameRules:PlayerHasCustomGameHostPrivileges(PlayerResource:GetPlayer(i)) then
+        CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(i), "reflex_force_start_game", {})
+      end 
+    end 
   end
 end
 
@@ -357,7 +375,7 @@ function NinjaClaasicGameMode:Respawn()
   Notifications:TopToAll({text="#Round", style=GameRules.styles.rounds, duration=3.0})
   Notifications:TopToAll({text=ROUND, style=GameRules.styles.rounds, continue=true })
   for i = 0, 9, 1 do
-    if PlayerResource:GetPlayer(i) ~= nil then
+    if PlayerResource:GetPlayer(i) ~= nil and player:GetAssignedHero() then
       player = PlayerResource:GetPlayer(i)
       PlayerResource:SetGold(i, 0, false)
       local hero = player:GetAssignedHero()
