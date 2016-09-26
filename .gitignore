@@ -1,0 +1,13 @@
+#ignore list
+#*.vmap
+*.vpk
+*.bin
+
+# Compiled formats
+*.vpcf_c
+*.vtex_c
+*.vsndevts_c
+*.vmat_c
+*.vjs_c
+*.vxml_c
+*.vcss_c

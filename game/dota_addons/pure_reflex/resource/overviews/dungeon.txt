@@ -1,0 +1,8 @@
+dungeon
+{
+	material materials/overviews/dungeon.vmat
+	pos_x -2576
+	pos_y 2496
+	scale 4.875
+}
+

@@ -1,0 +1,8 @@
+gods_of_arena
+{
+	material materials/overviews/gods_of_arena.vmat
+	pos_x -3400
+	pos_y 3456
+	scale 6.734
+}
+

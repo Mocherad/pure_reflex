@@ -1,0 +1,8 @@
+doom
+{
+	material materials/overviews/doom.vmat
+	pos_x -3712
+	pos_y 3008
+	scale 6.750
+}
+

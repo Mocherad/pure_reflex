@@ -1,0 +1,40 @@
+"addon"
+{
+	"InstructionsDescription"							"Description:"
+	"InstructionsDescriptionLines"						"Pure Reflex its team fight battle of pure reflex.You have only 1 life. If you get hit by something you're dead!<br>
+																	First team to win 15 rounds wins!"
+	"InstructionsTips"								"Tips:"
+	"InstructionsTipsLines"								"- When you kill someone, all 
+cooldowns on your skills 
+will refresh<br>
+													   - You can use blink to
+disjointthe dagger
+<br>
+													   - You can use refraction
+while casting shockwave"	
+
+	"InstructionsSocial"								"Follow to our official communities in social networks:"
+	"InstructionsSocialLines"								"- (fb) https://www.facebook.com/Pure-Reflex-391161427736788<br>
+												 - (vk) https://vk.com/purereflex"	
+
+	"InstructionsSpecialThanks"							"SpecialThanks:"
+	"InstructionsSpecialThanksLines"						"- Mudo<br>"
+
+	"InstructionsContacts"								"please let me know(on english) what things you like and dislike by emailing me at markmocherad@gmail.com"
+
+	"round_start_in"				"Round start in "
+	"the_battle_begins"				"The battle begins!"
+	"win"						    "win!"
+	"draw"						    "Draw!"	
+
+	"DOTA_GoodGuys"					"Radiant"
+	"DDOTA_BadGuys"					"Dire"
+
+
+
+	// -------------------  IMAGES ------------------------------
+	"title_strategic_time"			"file://{images}/hud/title_strategic_time_eng.png"
+
+																					
+}
+

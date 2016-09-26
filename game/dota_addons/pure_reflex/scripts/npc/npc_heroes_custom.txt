@@ -1,0 +1,79 @@
+// Dota Heroes File
+// NOTE: This is not for creating new heroes, this is for taking a currently existing hero as a template and overriding
+// the specified key-value combinations.  Use override_hero <hero_to_override> for this.
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Juggernaut
+	//=================================================================================================================
+	"npc_dota_hero_juggernaut"
+	{
+		"override_hero"				"npc_dota_hero_juggernaut"			// Hero to override
+		// "Ability1"					"refraction_gold"		// Ability 1
+		// "Ability2"					"blink_gold"		// Ability 2
+		// "Ability3"					"shockwave_gold"		// Ability 3	
+		// "Ability4"					"stone_remnant_gold"		// Ability 4
+		// "Ability5"					"blood_spatter"		// Ability 5
+		// "Ability6"					"dagger_throw_gold"		// Ability 6
+		"Ability7"					"on_respawn_protect"
+		"Ability8"					""		// Ability 6 
+		"VisionNighttimeRange"		"1600"										// Range of vision at night time.
+		"VisionDaytimeRange"		"1800"
+		"AttributeBaseStrength"		"0"			// Base strength
+		"AttributeStrengthGain"		"0"			// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"			// Base intelligence
+		"AttributeIntelligenceGain"	"0"			// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"			// Base agility
+		"AttributeAgilityGain"		"0"			// Agility bonus per level.	
+		"BountyXP"					"0"		// Experience earn.
+		"BountyGoldMin"				"0"		// Gold earned min.
+		"BountyGoldMax"				"0"		// Gold earned max.
+		"ArmorPhysical"				"0"		// Physical protection.
+		"MagicalResistance"			"0"			// Magical protection.
+		"MovementSpeed"				"400"			// Speed
+		"AttackDamageMin"			"10000"		// Damage range min.
+		"AttackDamageMax"			"10000"		// Damage range max.		
+		"StatusHealth"				"1"		// Base health.
+		"StatusHealthRegen"			"0"			// Health regeneration rate.
+		"StatusMana"				"1"			// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+		"MovementTurnRate"			"3.0"		
+	}
+
+	//=================================================================================================================
+	// HERO: PA
+	//=================================================================================================================
+	"npc_dota_hero_phantom_assassin"
+	{
+		"override_hero"				"npc_dota_hero_phantom_assassin"			// Hero to override
+		// "Ability1"					"refraction"		// Ability 1
+		// "Ability2"					"blink"		// Ability 2
+		// "Ability3"					"shockwave"		// Ability 3	
+		// "Ability4"					"stone_remnant"		// Ability 4
+		// "Ability5"					"blood_spatter"		// Ability 5
+		// "Ability6"					"dagger_throw"		// Ability 6
+		"Ability7"					"on_respawn_protect"
+		"Ability8"					""		// Ability 6 
+		"VisionNighttimeRange"		"1600"										// Range of vision at night time.
+		"VisionDaytimeRange"		"1800"
+		"AttributeBaseStrength"		"0"			// Base strength
+		"AttributeStrengthGain"		"0"			// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"			// Base intelligence
+		"AttributeIntelligenceGain"	"0"			// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"			// Base agility
+		"AttributeAgilityGain"		"0"			// Agility bonus per level.	
+		"BountyXP"					"0"		// Experience earn.
+		"BountyGoldMin"				"0"		// Gold earned min.
+		"BountyGoldMax"				"0"		// Gold earned max.
+		"ArmorPhysical"				"0"		// Physical protection.
+		"MagicalResistance"			"0"			// Magical protection.
+		"MovementSpeed"				"400"			// Speed
+		"AttackDamageMin"			"10000"		// Damage range min.
+		"AttackDamageMax"			"10000"		// Damage range max.		
+		"StatusHealth"				"1"		// Base health.
+		"StatusHealthRegen"			"0"			// Health regeneration rate.
+		"StatusMana"				"1"			// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+		"MovementTurnRate"			"3.0"		
+	}
+}

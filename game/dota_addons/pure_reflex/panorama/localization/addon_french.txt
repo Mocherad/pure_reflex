@@ -1,0 +1,35 @@
+"addon"
+{
+	"InstructionsDescription"							"Description:"
+	"InstructionsDescriptionLines"						"Pure Reflex est un jeu de combat en equipe necessitant des reflex eguise ,vous n'avez qu'une vie , si vous etes toucher , vous etes mort !<br>
+																	La premiere equipe a 15 victoire gagne !"
+	"InstructionsTips"								"Astuce:"
+	"InstructionsTipsLines"								"- Lorsque vous tuez quelqu'un , tous vos cooldown sont remis a 0<br>
+													   - Vous pouvez utilisez le blink pour desintegre la dague
+<br>
+													   - Vous pouvez utilise refraction pendant que vous incantez shockwave"	
+
+	"InstructionsSocial"								"Suivez nous sur les reseau sociaux:"
+	"InstructionsSocialLines"								"- (fb) https://www.facebook.com/Pure-Reflex-391161427736788<br>
+											         - (vk) https://vk.com/purereflex"	
+
+	"InstructionsSpecialThanks"							"Remerciement special:"
+	"InstructionsSpecialThanksLines"						"- Thanks for translate FrenchDeath<br>"
+
+	"InstructionsContacts"								"Si vous avez des suggestion , ecrivez a ce mail (en anglais !) markmocherad@gmail.com"
+																					
+}
+
+
+	"round_start_in"				"Round start in "
+	"the_battle_begins"				"The battle begins!"
+	"win"						    "win!"
+	"draw"						    "Draw!"	
+
+	"DOTA_GoodGuys"					"Radiant"
+	"DDOTA_BadGuys"					"Dire"
+
+
+
+	// -------------------  IMAGES ------------------------------
+	"title_strategic_time"			"file://{images}/hud/title_strategic_time_eng.png"

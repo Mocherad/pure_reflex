@@ -1,0 +1,21 @@
+﻿"addon"
+{
+	"InstructionsDescription"							"描述:"
+	"InstructionsDescriptionLines"						"Pure Reflex 是一款纯粹靠反应速度取胜的团队战斗游戏。你只拥有一条生命，一旦你被任何攻击击中，你都会死翘翘！<br>
+																	首先达到15轮胜利的队伍将会获得最终胜利！"
+	"InstructionsTips"								"小建议:"
+	"InstructionsTipsLines"								"- 当你完成一次击杀时，你将会刷新重置所有技能的冷却时间<br>
+													   - 你可以通过闪烁来躲避一些指定性技能，例如痛苦女王的毒镖<br>
+													   -你可以在使用光法的技能猥琐推波的同时使用折射"	
+
+	"InstructionsSocial"								"请关注我们的官方讨论论坛:"
+	"InstructionsSocialLines"								"- (fb) https://www.facebook.com/Pure-Reflex-391161427736788<br>
+												 - (vk) https://vk.com/purereflex"	
+
+	"InstructionsSpecialThanks"							"特别感谢:"
+	"InstructionsSpecialThanksLines"						"- 感谢翻译人员：Dewangsky，meepo--白睫，无双<br>"
+
+	"InstructionsContacts"						"请让我知道，你喜欢什么和讨厌什么，如果你有更好的点子和想法，欢迎发邮件到markmocherad@gmail.com（英语）。"
+																					
+}
+

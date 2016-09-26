@@ -1,0 +1,180 @@
+.GameSetupRoot { 
+	width: 100%;
+	height: 100%;
+}
+
+.Headline1 {
+	font-size: 24px;
+	font-family: Goudy Trajan Medium,FZKai-Z03,TH Sarabun New,YDYGO 540;
+}
+
+#SettingsRoot {
+	align: center bottom;
+
+	margin-bottom: 150px;
+
+	width: 600px;
+	height: 350px;
+
+	background-color: #080808FA;
+
+	border-radius: 8px;
+
+	box-shadow: #000000ff 0px 0px 21px 0px;
+
+	flow-children: down;
+}
+
+#AbilityMenuRoot {
+	align: center bottom;
+	margin-bottom: 525px;
+
+	min-width: 95px;
+	min-height: 95px;
+
+	background-color: #080808FA;
+
+	border-radius: 8px;
+
+	box-shadow: #000000ff 0px 0px 21px 0px;
+
+	padding: 8px;
+
+	flow-children: right;
+
+	transition: opacity 0.3s ease-in-out 0.0s, transform 0.3s ease-in-out 0.0s;
+}
+
+.CBR {
+	horizontal-align: center;
+	width: 90%;
+	height: 1px;
+
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #ffffff00 ), color-stop( 0.4, #757575 ), color-stop( 0.6, #757575 ), to( #ffffff00 ) );
+}
+
+.Half {
+	width: 100%;
+	height: 49%;
+}
+
+#Abilities {
+	flow-children: right;
+	align: center center;
+
+	margin-top: 8px;
+}
+
+.AbilityRoot {
+	width: 85px;
+	min-height: 85px;
+
+	margin: 11px;
+
+	flow-children: down;
+}
+
+#AbilityImage {
+	width: 85px;
+	height: 85px;
+
+	border-radius: 4px;
+}
+
+#AbilityImage:hover {
+	border: 2px solid #bbbbbb;
+}
+
+#AbilityImage:active {
+	sound: "General.SelectAction";
+}
+
+.Hidden {
+	opacity: 0.0;
+	transform: scale3d(0.2, 0.2, 0.2) translate3d( 0px, 100px, 0px );
+}
+
+.YellowSquare {
+	align: center bottom;
+
+	width: 12px;
+	height: 12px;
+	margin-top: 14px;
+
+	border-radius: 3px;
+
+	background-color: #ceaa31;
+	border: 2px solid #734918;
+}
+
+#Settings {
+	flow-children: down;
+
+	margin-left: 45px;
+	margin-top: 15px;
+}
+
+#ReconnectButton {
+	visibility: visible;
+}
+
+.PlayButton {
+	width: 160px;
+	box-shadow: fill #002a6600 -4px -4px 8px 9px;
+	margin-right: 45px;
+}
+
+DropDownMenu {
+	width: 200px;
+}
+
+DropDown, DOTASettingsEnumDropDown {
+	width: 200px;
+}
+
+ToggleButton, DOTASettingsCheckbox {
+	flow-children: right;
+	padding: 1px 4px;
+	color: white;
+
+	margin-top: 14px;
+	margin-left: -4px;
+
+	transition-property: background-color, box-shadow, color;
+	transition-duration: 0.25s;
+	transition-timing-function: ease-in-out;
+}
+
+ToggleButton .TickBox, DOTASettingsCheckbox .TickBox {
+	vertical-align: center;
+
+	background-color: black;
+	border: 2px solid #5e686966;
+	box-shadow: #00000055 -2px -2px 1px 4px;
+
+	transition-property: background-color, box-shadow, color;
+	transition-duration: 0.20s;
+	transition-timing-function: ease-in-out;	
+}
+
+ToggleButton:hover .TickBox, DOTASettingsCheckbox:hover .TickBox {
+	border: 2px solid #697879;
+}
+
+ToggleButton:selected .TickBox, DOTASettingsCheckbox:selected .TickBox {
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #e7f6f5 ), to( #a0d6d7 ) );
+	border: 3px solid #000000;
+	box-shadow: #5b62bf77 -4px -4px 8px 8px;
+}
+
+.CheckBox .TickBox {
+	width: 30px;
+	height: 30px;
+}
+
+ToggleButton Label, DOTASettingsCheckbox Label {
+	margin-top: 4px;
+	margin-left: 16px;
+	font-size: 18px;
+	font-family: Goudy Trajan Medium,FZKai-Z03,TH Sarabun New,YDYGO 540;
+}

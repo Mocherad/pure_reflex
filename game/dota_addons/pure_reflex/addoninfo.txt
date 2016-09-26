@@ -1,0 +1,17 @@
+"AddonInfo"
+{
+	maps				"gods_of_arena doom dungeon"
+	"IsPlayable"	"1"
+	"gods_of_arena"
+	{
+					"MaxPlayers"                    "10"
+	}
+	"doom"
+	{
+					"MaxPlayers"                    "10"
+	}
+	"dungeon"
+	{
+					"MaxPlayers"                    "10"
+	}
+}

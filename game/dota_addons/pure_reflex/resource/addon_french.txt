@@ -1,0 +1,113 @@
+"lang"
+{ 
+	"Language"		"french"
+	"Tokens"
+	{		
+		"addon_game_name"					"Pure Reflex"
+		"addonname"							"Pure Reflex"
+		"Welcome"							"For find more players you need enter the gaming channel"
+
+
+		"Wins" 				 	" Wins the Round!"
+		"Round" 				"Round "
+		"Draw"					"Round Draw!"
+		"LastRound" 			"Last Round!"
+		"PrepareYourselves" 	"Prepare Yourselves!" 
+
+		"Radiant"			    " Radiant "
+  		"Dire" 					" Dire "
+	
+	//  =================================== Abilities ======================================
+	
+
+										 // Refraction*+ 
+
+	"DOTA_Tooltip_Ability_refraction"										"Refraction"
+	"DOTA_Tooltip_Ability_refraction_Description"							"Le Héros devient insaisissable, évitant tout les dommages"
+
+	"DOTA_Tooltip_refraction_modifier"										"Refraction"
+	"DOTA_Tooltip_refraction_modifier_Description"			 				"Le Héros devient insaisissable"
+
+	"DOTA_Tooltip_Ability_refraction_duration"								"DURÉE:"
+
+										// Schockwave*+ 
+
+	"DOTA_Tooltip_Ability_shockwave"										"Schockwave"
+	"DOTA_Tooltip_Ability_shockwave_Description"							"Le Héros envoie une onde de force , endommagent les ennemies sur une ligne"
+
+	"DOTA_Tooltip_Ability_shockwave_speed"									"VITESSE:"
+	"DOTA_Tooltip_Ability_shockwave_range"									"PORTÉE:"
+	
+
+
+										// Blink*+ 
+
+	"DOTA_Tooltip_Ability_blink"											"Blink"
+	"DOTA_Tooltip_Ability_blink_Description"								"Ce téléporte sur une courte distance , et permet au Héros de partir ou d'entrès en combat"
+
+	"DOTA_Tooltip_Ability_blink_range"										"PORTÉE:"
+
+										// Dagger throw*+ 
+
+	"DOTA_Tooltip_Ability_dagger_throw"										"Dagger throw"
+	"DOTA_Tooltip_Ability_dagger_throw_Description"							"lance une dague infligeant des dommages"
+
+	"DOTA_Tooltip_Ability_dagger_throw_speed"								"VITESSE:"
+	"DOTA_Tooltip_Ability_dagger_throw_range"								"PORTÉE:"
+
+										// Stone remnant+ 
+
+	"DOTA_Tooltip_Ability_stone_remnant"										"Stone remnant"
+	"DOTA_Tooltip_Ability_stone_remnant_Description"							"Héros temporarily enchants himself, granting the properties of a Stone. After spell ends the remnant shatters, releasing the Héros. Stone blocks all beloved damage, but Héros cant moving and using spells."
+
+	"DOTA_Tooltip_Ability_stone_remnant_duration"							"DURÉE:"
+
+	//  == GOLDEN ==
+
+
+							 			// Refraction*+ 
+
+	"DOTA_Tooltip_Ability_refraction_gold"										"Refraction"
+	"DOTA_Tooltip_Ability_refraction_gold_Description"							"Le Héros devient insaisissable, évitant tout les dommages"
+
+	"DOTA_Tooltip_refraction_gold_modifier"										"Refraction"
+	"DOTA_Tooltip_refraction_gold_modifier_Description"			 				"Le Héros devient insaisissable"
+
+	"DOTA_Tooltip_Ability_refraction_gold_duration"								"DURÉE:"
+
+										// Schockwave*+ 
+
+	"DOTA_Tooltip_Ability_shockwave_gold"										"Schockwave"
+	"DOTA_Tooltip_Ability_shockwave_gold_Description"							"Héros sends out a wave of force, damaging enemy units in a line."
+
+	"DOTA_Tooltip_Ability_shockwave_gold_speed"									"VITESSE:"
+	"DOTA_Tooltip_Ability_shockwave_gold_range"									"PORTÉE:"
+
+
+
+										// Blink*+ 
+
+	"DOTA_Tooltip_Ability_blink_gold"											"Blink"
+	"DOTA_Tooltip_Ability_blink_gold_Description"								"Ce téléporte sur une courte distance , et permet au ninja de partir ou d'entrès en combat"
+
+	"DOTA_Tooltip_Ability_blink_gold_range"										"PORTÉE:"
+
+										// Dagger throw*+ 
+
+	"DOTA_Tooltip_Ability_dagger_throw_gold"									"Dagger throw"
+	"DOTA_Tooltip_Ability_dagger_throw_gold_Description"						"lance une dague infligeant des dommages"
+
+	"DOTA_Tooltip_Ability_dagger_throw_gold_speed"								"VITESSE:"
+	"DOTA_Tooltip_Ability_dagger_throw_gold_range"								"PORTÉE:"
+
+										// Stone remnant+ 
+
+	"DOTA_Tooltip_Ability_stone_remnant_gold"										"Stone remnant"
+	"DOTA_Tooltip_Ability_stone_remnant_gold_Description"							"Héros temporarily enchants himself, granting the properties of a Stone. After spell ends the remnant shatters, releasing the Héros. Stone blocks all beloved damage, but Héros cant moving and using spells."
+
+	"DOTA_Tooltip_Ability_stone_remnant_gold_duration"								"DURÉE:"
+
+	}
+
+}
+		

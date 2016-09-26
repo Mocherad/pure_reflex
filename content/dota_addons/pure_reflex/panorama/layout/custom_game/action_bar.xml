@@ -1,0 +1,20 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/action_bar.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/action_bar.js" />
+	</scripts>
+	<Panel class="AbilityOverlayRoot">
+		<Button id="LevelUpButton" onactivate="OnLevelUpClicked()">
+			<Panel id="LevelUpButtonInset">
+				<Label id="LevelUpButtonInsetText_1"  text="LEVELUP" />
+				<Label id="LevelUpButtonInsetText_2"  text="1" />
+			</Panel>
+			<!-- <Image id="back" class="background" src="file://{images}/spellicons/bisha.png"/> -->
+		</Button>
+		<Panel id="ability_list" />
+	</Panel>
+</root>
+

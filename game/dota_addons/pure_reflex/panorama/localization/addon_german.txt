@@ -1,0 +1,36 @@
+"addon"
+{
+	"InstructionsDescription"							"Beschreibung:"
+	"InstructionsDescriptionLines"						"Pure Reflex ist ein schneller Teamkampf. Du hast nur ein Leben. Wirst du von etwas getroffen, bist du tot!<br>
+																	Das erste Team welches 15 Runden fur sich entscheidet, gewinnt!"
+	"InstructionsTips"								"Tipps:"
+	"InstructionsTipsLines"								"-Wenn du jemanden totest werden alle Cooldowns zuruckgesetzt<br>
+													   -Du kannst Blink nutzen um Dolchen zu entweichen
+<br>
+													   -Du kannst Refraction nutzen wahren du Shockwave channelst"	
+
+	"InstructionsSocial"								"Folge uns auf unseren offiziellen Communities auf folgenden Social Networks:"
+	"InstructionsSocialLines"								"- (fb) https://www.facebook.com/Pure-Reflex-391161427736788<br>
+												 - (vk) https://vk.com/purereflex"	
+
+	"InstructionsSpecialThanks"							"Besonderen Dank:"
+	"InstructionsSpecialThanksLines"						"-Thanks for translate DarkMio<br>"
+
+	"InstructionsContacts"								"Bitte schreibe mir (in Englisch) was du magst oder nicht magst an: markmocherad@gmail.com"
+		
+
+	"round_start_in"				"Round start in "
+	"the_battle_begins"				"The battle begins!"
+	"win"						    "win!"
+	"draw"						    "Draw!"	
+
+	"DOTA_GoodGuys"					"Radiant"
+	"DDOTA_BadGuys"					"Dire"
+
+
+
+	// -------------------  IMAGES ------------------------------
+	"title_strategic_time"			"file://{images}/hud/title_strategic_time_eng.png"
+																			
+}
+

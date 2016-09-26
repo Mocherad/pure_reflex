@@ -1,0 +1,36 @@
+"addon"
+{
+	"InstructionsDescription"							"Описание:"
+	"InstructionsDescriptionLines"						"Pure Reflex это командная тактическая игра, где вам предоставляется возможность проявить и повысить рефлексы. У вас есть только одна жизнь. Любой вред от противника смертельный!<br>
+																	Первая команда, которая выиграет все 15 раундов, победит!"
+	"InstructionsTips"								"Подсказки:"
+	"InstructionsTipsLines"								"- Если вы убили кого ни будь все умение моментально откатываются<br>
+													   - Используйте прыжки, чтобы избежать вреда от кинжала что летит в вас
+<br>
+													   - Используйте преломления, чтобы стать неуязвимым от кинжалов и ударных волн противника"	
+
+	"InstructionsSocial"								"Присоединяйтесь к официальным сообществ в соцсетях:"
+	"InstructionsSocialLines"								"- (fb) https://www.facebook.com/Pure-Reflex-391161427736788<br>
+												 - (vk) https://vk.com/purereflex"	
+
+	"InstructionsSpecialThanks"							"Благодарность:"
+	"InstructionsSpecialThanksLines"						"- Спасибо Mudo<br>"
+
+	"InstructionsContacts"								"пожалуйста, дайте мне знать, что вам понравилось а что нет, по электронной почте markmocherad@gmail.com"
+	
+
+	"round_start_in"				"Раунд начнется через "
+	"the_battle_begins"				"Битва началась!"
+	"win"						    "побеждает!"
+	"draw"						    "Ничья!"	
+
+	"DOTA_GoodGuys"					"Свет"
+	"DDOTA_BadGuys"					"Тьма"
+
+
+
+	// -------------------  IMAGES ------------------------------
+	"title_strategic_time"			"file://{images}/hud/title_strategic_time_ru.png"
+																				
+}
+

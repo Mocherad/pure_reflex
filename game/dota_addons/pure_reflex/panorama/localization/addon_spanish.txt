@@ -1,0 +1,23 @@
+"addon"
+{
+	"InstructionsDescription"							"Descripción:"
+	"InstructionsDescriptionLines"						"Pure Reflex es una batalla en equipo en la que se requieren reflejos.Tienes solo 1 vida. Si eres golpeado, estás muerto!<br>
+																	El primer equipo que gane 15 rondas gana!"
+	"InstructionsTips"								"Consejos:"
+	"InstructionsTipsLines"								"- Si matas a alguien, todos los tiempos de reutilización de tus habilidades serán reiniciados<br>
+													   - Puedes saltar para esquivar las dagas<br>
+													   - Puedes usar refraction mientras lanzas shockwave"	
+
+	"InstructionsSocial"								"Follow to our official communities in social networks:"
+	"InstructionsSocialLines"								"- (fb) https://www.facebook.com/Pure-Reflex-391161427736788<br>
+												 - (vk) https://vk.com/purereflex"	
+
+	"InstructionsSpecialThanks"							"Agradecimiento especial:"
+	"InstructionsSpecialThanksLines"					"- Thanks for translate muZk<br>"
+
+	"InstructionsContacts"								"Si tienes alguna sugerencia, por favor escribe al correo (en inglés!) markmocherad@gmail.com"
+
+
+																					
+}
+

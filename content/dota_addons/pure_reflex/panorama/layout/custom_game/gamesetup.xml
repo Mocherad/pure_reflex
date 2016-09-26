@@ -1,0 +1,46 @@
+<root>
+  <styles>
+    <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+    <include src="s2r://panorama/styles/play.vcss_c" />
+    <include src="file://{resources}/styles/custom_game/gamesetup.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/gamesetup.js" />
+  </scripts>
+  <snippets>
+    <snippet name="Ability">
+      <Panel class="AbilityRoot">
+        <DOTAAbilityImage id="AbilityImage" abilityname="life_stealer_consume"/>
+      </Panel>
+    </snippet>
+    <snippet name="YellowSquare">
+      <Panel class="YellowSquare">
+      </Panel>
+    </snippet>
+  </snippets>
+  <Panel class="GameSetupRoot">
+    <Panel id="AbilityMenuRoot" class="Hidden">
+    </Panel>
+    <Panel id="SettingsRoot">
+      <Panel class="Half" id="AbilitiesRoot">
+        <Panel id="Abilities">
+        </Panel>
+      </Panel>
+      <Panel class="CBR"/>
+      <Panel class="Half" id="RulesRoot">
+        <Panel id="Settings">
+          <DropDown oninputsubmit="OnDropDownChanged()">
+            <Label text="12 Minutes" id="12Minutes"/>
+            <Label text="15 Minutes" id="15Minutes"/>
+            <Label text="20 Minutes" id="20Minutes"/>
+          </DropDown>
+          <DOTASettingsCheckbox id="RandomSkills" text="Random Skills" onactivate="RandomSkills()" />
+          <DOTASettingsCheckbox id="Anomalies" text="Anomalies" onactivate="Anomalies()" />
+        </Panel>
+        <Button id="PlayButton" class="PlayButton">
+          <Label text="GO!" />
+        </Button>
+      </Panel>
+    </Panel>
+  </Panel>
+</root>

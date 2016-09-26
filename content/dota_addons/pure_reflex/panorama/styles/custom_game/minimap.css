@@ -1,0 +1,23 @@
+.MinimapOverlayRoot
+{
+  background-color: #272823;
+  width: 294px;
+  height: 294px;
+  border: 7px solid black;
+  padding: 3px;
+  opacity: 0.4;
+
+  vertical-align: bottom;
+  horizontal-align: left;
+
+  margin-left:1px;
+  margin-bottom:-6px;
+  z-index: -2;
+  	
+}
+
+#Minimap
+{
+  
+ 
+}
