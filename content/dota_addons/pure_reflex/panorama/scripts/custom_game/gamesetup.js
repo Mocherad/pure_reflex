@@ -26,29 +26,7 @@ var slots = [
 	]
 ]
 
-var isHost = true;
-
-function CheckForHostPrivileges()
-{
-	var playerInfo = Game.GetLocalPlayerInfo();
-	if ( !playerInfo ) {
-		$("#PlayButton").enabled = false;
-		isHost = false;
-		return;
-	}
-
-	GameEvents.Subscribe("reflex_force_start_game", (function () {
-		var gameTable = {};
-		for (var i = 0; i < 5; i++) {
-			gameTable[i.toString()] = $("#Abilities").FindChildTraverse("AbilitySlot" + i).FindChildTraverse("AbilityImage").abilityname;
-			$.Msg(gameTable[i]);
-		}
-		gameTable["randomSkills"] = $("#RandomSkills").enabled;
-		gameTable["anomalies"] = $("#Anomalies").enabled;
-
-		GameEvents.SendCustomGameEventToServer( "reflex_start_game", gameTable);
-	}))
-}
+var isHost = false;
 
 function ClearPanel(p) {
 	$.Each(p.Children(), function (panel) {
@@ -67,7 +45,23 @@ function SetupTooltips(panel) {
 }
 
 (function () {
-	CheckForHostPrivileges()
+	$("#PlayButton").visible = false;
+	GameEvents.Subscribe("reflex_set_host", (function () {
+		isHost = true;
+		$("#PlayButton").visible = true;
+	}))
+
+	GameEvents.Subscribe("reflex_force_start_game", (function () {
+		var gameTable = {};
+		for (var i = 0; i < 5; i++) {
+			gameTable[i.toString()] = $("#Abilities").FindChildTraverse("AbilitySlot" + i).FindChildTraverse("AbilityImage").abilityname;
+			$.Msg(gameTable[i]);
+		}
+		gameTable["randomSkills"] = $("#RandomSkills").enabled;
+		gameTable["anomalies"] = $("#Anomalies").enabled;
+
+		GameEvents.SendCustomGameEventToServer( "reflex_start_game", gameTable);
+	}))
 
 	ClearPanel($("#Abilities"));
 

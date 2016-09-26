@@ -264,6 +264,16 @@ function NinjaClaasicGameMode:OnGameRulesStateChange(keys)
     DeepPrintTable(keys)
     GameRules:SendCustomMessage("#Welcome", 0, 0)
   	GameRules:GetGameModeEntity():SetThink("Respawn", self, 15)
+
+    Timers:CreateTimer(1, function()
+        for i = 0, 9, 1 do
+          if PlayerResource:GetPlayer(i) ~= nil and GameRules:PlayerHasCustomGameHostPrivileges(PlayerResource:GetPlayer(i)) then
+            CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(i), "reflex_set_host", {})
+          end 
+        end 
+      end
+    )
+    
   elseif GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS and noData == true then
     for i = 0, 9, 1 do
       if PlayerResource:GetPlayer(i) ~= nil and GameRules:PlayerHasCustomGameHostPrivileges(PlayerResource:GetPlayer(i)) then
