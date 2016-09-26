@@ -79,8 +79,9 @@ function SetupTooltips(panel) {
 			abilitySlot.FindChildTraverse("AbilityImage").abilityname = slots[i][0].abilityname;
 			SetupTooltips(abilitySlot.FindChildTraverse("AbilityImage"))
 
-			if (isHost) {
-				abilitySlot.FindChildTraverse("AbilityImage").SetPanelEvent("onmouseactivate", (function () {
+			
+			abilitySlot.FindChildTraverse("AbilityImage").SetPanelEvent("onmouseactivate", (function () {
+				if (isHost) {
 					if ($("#AbilityMenuRoot").currentSlot == abilitySlot.i) {
 						$("#AbilityMenuRoot").AddClass("Hidden");
 						$("#AbilityMenuRoot").currentSlot = -1;
@@ -112,8 +113,9 @@ function SetupTooltips(panel) {
 						})();
 					}
 					$("#AbilityMenuRoot").RemoveClass("Hidden");
-				}));
-			} //else {
+				}
+			}));
+ //else {
 				CustomNetTables.SubscribeNetTableListener("abilities", (function (table_name, key, data) {
 					for (var i = 0; i < 5; i++) {
 						if (data[i.toString()]) {
