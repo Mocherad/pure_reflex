@@ -184,8 +184,11 @@ function NinjaClaasicGameMode:InitHero(hero)
     end
   end
   for k,v in pairs(BUILD) do
-    hero:AddAbility(v)
-    print(v)
+    if hero:GetUnitName() == "npc_dota_hero_juggernaut" then
+      hero:AddAbility(v.."_gold")
+    else
+      hero:AddAbility(v)
+    end
   end
   hero:AddAbility("on_respawn_protect")
   hero:AddAbility("blood_spatter")
@@ -273,7 +276,7 @@ function NinjaClaasicGameMode:OnGameRulesStateChange(keys)
         end 
       end
     )
-    
+
   elseif GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS and noData == true then
     for i = 0, 9, 1 do
       if PlayerResource:GetPlayer(i) ~= nil and GameRules:PlayerHasCustomGameHostPrivileges(PlayerResource:GetPlayer(i)) then
@@ -374,7 +377,7 @@ function NinjaClaasicGameMode:Respawn()
 
 
   
-  local player = nil
+  local player = PlayerResource:GetPlayer(i)
   
   if ROUND == 1 then
     ListenToGameEvent('entity_killed', Dynamic_Wrap(NinjaClaasicGameMode, 'hero_killed'), self)
@@ -385,7 +388,7 @@ function NinjaClaasicGameMode:Respawn()
   Notifications:TopToAll({text="#Round", style=GameRules.styles.rounds, duration=3.0})
   Notifications:TopToAll({text=ROUND, style=GameRules.styles.rounds, continue=true })
   for i = 0, 9, 1 do
-    if PlayerResource:GetPlayer(i) ~= nil and player:GetAssignedHero() then
+    if player ~= nil and player:GetAssignedHero() then
       player = PlayerResource:GetPlayer(i)
       PlayerResource:SetGold(i, 0, false)
       local hero = player:GetAssignedHero()
