@@ -32,9 +32,9 @@
       <Panel class="Half" id="RulesRoot">
         <Panel id="Settings">
           <DropDown id="TimeDropDown" oninputsubmit="OnDropDownChanged()">
-            <Label text="12 Minutes" id="12"/>
-            <Label text="15 Minutes" id="15"/>
-            <Label text="20 Minutes" id="20"/>
+            <Label text="12 Rounds" id="12"/>
+            <Label text="15 Rounds" id="15"/>
+            <Label text="20 Rounds" id="20"/>
           </DropDown>
           <DOTASettingsCheckbox id="RandomSkills" text="Random Skills" onactivate="RandomSkills()" />
           <DOTASettingsCheckbox id="Anomalies" text="Anomalies" onactivate="Anomalies()" />

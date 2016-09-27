@@ -3,11 +3,7 @@
 {
 	"Version"		"1"
 
-"mirana_leap"
-  {
-  "AbilityManaCost"				"0"
-  "AbilityCooldown"				"1"
-}
+
 "hide_sphere"
   {
     // General
@@ -62,6 +58,11 @@
 			{
 				"var_type"				"FIELD_FLOAT"
 				"duration"				"6"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"ultimate"				"1"
 			}
 		}
 		
@@ -177,6 +178,11 @@
 			{
 				"var_type"				"FIELD_FLOAT"
 				"duration"				"6"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"ultimate"				"1"
 			}
 		}
 		
@@ -1375,17 +1381,15 @@
         }
 	}
 
-"mirana_leap_datadriven"
+"leap"
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-	"AbilityTextureName"	"mirana_leap"
-	"AbilityCastAnimation" 			"ACT_DOTA_ATTACK_EVENT"
-
-		"AnimationPlaybackRate" 		"0.9"
-
+	"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityTextureName"	"leap"
+	"MaxLevel"				"1"
+	
 	// Precache
 	//-------------------------------------------------------------------------------------------------------------
 	"precache"
@@ -1400,8 +1404,8 @@
 
 	// Time		
 	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"1"
-	"AbilityDuration"				"10.0"
+	"AbilityCooldown"				"2"
+	"AbilityDuration"				"1"
 
 	// Cost
 	//-------------------------------------------------------------------------------------------------------------
@@ -1491,7 +1495,133 @@
 	{
 		"modifier_leap_datadriven"
 		{
-		 "Passive" "1"
+		 "Passive" "0"
+    	"EffectName" "particles/econ/items/invoker/invoker_apex/invoker_apex_spawn.vpcf"
+    	"EffectAttachType" "follow_origin"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%leap_speedbonus_as"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%leap_speedbonus"
+			}
+		}
+	}
+}
+"leap_gold"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityTextureName"	"leap_gold"
+	"MaxLevel"				"1"
+	
+	// Precache
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+	"particle" "particles/econ/items/invoker/invoker_apex/invoker_apex_spawn.vpcf"
+	}
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"2"
+	"AbilityDuration"				"1"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"0"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"leap_distance"			"600"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"leap_speed"			"1600.0"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"leap_acceleration"		"12000"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"leap_radius"			"775"
+		}
+		"05"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"leap_speedbonus"	"4 8 12 16"
+		}
+		"06"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"leap_speedbonus_as"	"8 16 24 32"
+		}
+		"07"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"leap_duration"			"1.2"
+		}
+
+	}
+
+	"OnSpellStart"
+	{
+		
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/spells/leap.lua"
+			"Function"		"Leap"
+		}
+
+		"ApplyMotionController"
+		{
+		    "Target" 		"CASTER"
+		    "ScriptFile"    "scripts/vscripts/spells/leap.lua"
+		    "HorizontalControlFunction" "LeapHorizonal"
+		    "VerticalControlFunction" 	"LeapVertical"         
+		}
+
+		"ActOnTargets"
+		{
+			"Target"
+            {
+                "Center" "CASTER"
+                "Radius" "%leap_radius"
+                "Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
+                "Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+            }
+
+            "Action"
+            {
+            	"ApplyModifier"
+            	{
+            		"ModifierName"	"modifier_leap_datadriven"
+            		"Target"		"TARGET"
+            		"Duration"		"%leap_duration"
+            	}
+            }
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_leap_datadriven"
+		{
+		 "Passive" "0"
     	"EffectName" "particles/econ/items/invoker/invoker_apex/invoker_apex_spawn.vpcf"
     	"EffectAttachType" "follow_origin"
 			"Properties"

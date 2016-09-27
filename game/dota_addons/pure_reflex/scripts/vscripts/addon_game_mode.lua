@@ -12,7 +12,7 @@ require( "libraries/physics" )
 BUILD = {}
 RANDOM_SKILLS = false
 ANOMALIES = false
-TIME = 12 * 60
+ROUNDS = 12
 
 local noData = true
 
@@ -35,6 +35,8 @@ function Precache( context )
   PrecacheResource( "particle","particles/shockwave_gold/shockwave_gold.vpcf", context) 
   PrecacheResource( "particle","particles/refraction/refraction.vpcf", context) 
   PrecacheResource( "particle","particles/refraction_gold/refraction_gold.vpcf", context) 
+  PrecacheResource( "particle","particles/refraction_gold/refraction_gold.vpcf", context) 
+  PrecacheResource( "particle"," particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/phantom_assassin_stifling_dagger_arcana.vpcf", context) 
 
   PrecacheResource( "particle","particles/shockwave_critical/shockwave_critical.vpcf", context) 
   PrecacheResource( "particle","particles/stone_remnant/stone_remnant.vpcf", context) 
@@ -177,8 +179,8 @@ function NinjaClaasicGameMode:FinishGameSetup(args)
   RANDOM_SKILLS = args.randomSkills
   ANOMALIES = args.anomalies
 
-  TIME = args.time * 60
-  print(TIME)
+  ROUDS = args.rounds
+  print(ROUNDS)
 
   noData = false
 
@@ -451,10 +453,10 @@ function NinjaClaasicGameMode:EndRoundCheck()
 		GameMode:SetTopBarTeamValue ( DOTA_TEAM_BADGUYS, badGuysScore)
 		GameMode:SetTopBarTeamValue ( DOTA_TEAM_GOODGUYS, goodGuysScore )
 		roundGoing = false
-			if goodGuysScore == 15 then
+			if goodGuysScore == ROUNDS then
 				NinjaClaasicGameMode:GoodGuysVictory()
 			else
-				if goodGuysScore == 14 and badGuysScore == 14 then
+				if goodGuysScore == (ROUNDS-1) and badGuysScore == (ROUNDS-1) then
 					NinjaClaasicGameMode:lastRound()
 				else
 					GameRules:GetGameModeEntity():SetThink("Respawn", self, 5)
@@ -498,17 +500,10 @@ function NinjaClaasicGameMode:hero_killed( keys )
    local KillerUnit = EntIndexToHScript( keys.entindex_attacker )
    local KilledUnit = EntIndexToHScript( keys.entindex_killed )
    
-
-   if KillerUnit:GetUnitName() == "npc_dota_hero_juggernaut" then
-     KillerUnit:FindAbilityByName("refraction_gold"):EndCooldown()
-     KillerUnit:FindAbilityByName("shockwave_gold"):EndCooldown()
-     KillerUnit:FindAbilityByName("dagger_throw_gold"):EndCooldown()
-     KillerUnit:FindAbilityByName("blink_gold"):EndCooldown()
-     else
-     KillerUnit:FindAbilityByName("blink"):EndCooldown()
-     KillerUnit:FindAbilityByName("refraction"):EndCooldown()
-     KillerUnit:FindAbilityByName("shockwave"):EndCooldown()
-     KillerUnit:FindAbilityByName("dagger_throw"):EndCooldown()
+    for i=0,16 do
+    if KillerUnit:GetAbilityByIndex(i) and KillerUnit:GetAbilityByIndex(i):GetSpecialValueFor('ultimate') == 0 then
+      KillerUnit:GetAbilityByIndex(i):EndCooldown()
+    end
   end
    		Timers:CreateTimer({
 		endTime = 3, -- when this timer should first execute, you can omit this if you want it to run first on the next frame

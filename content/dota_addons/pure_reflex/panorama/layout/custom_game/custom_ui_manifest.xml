@@ -45,6 +45,8 @@
         // <Image src="file://{images}/spellicons/dagger_throw_gold.png" /> 
         // <Image src="file://{images}/spellicons/stone_remnant.png" /> 
         // <Image src="file://{images}/spellicons/stone_remnant_gold.png" /> 
+        // <Image src="file://{images}/spellicons/leap.png" /> 
+        // <Image src="file://{images}/spellicons/leap_gold.png" /> 
          
 	</Panel>
 </root>

@@ -1,33 +1,29 @@
 var slots = [
 	[
 	    { abilityname: "refraction" },
-		{ abilityname: "mirana_leap" },
-		{ abilityname: "life_stealer_consume" }
+		{ abilityname: "leap" },
+
 	],
 	[
 	    { abilityname: "blink" },
-		{ abilityname: "mirana_leap_datadriven" },
-		{ abilityname: "life_stealer_consume" }
+
 	],
 	[
 	    { abilityname: "shockwave" },
-		{ abilityname: "life_stealer_consume" },
-		{ abilityname: "life_stealer_consume" }
+
 	],
 		[
 	    { abilityname: "stone_remnant" },
-		{ abilityname: "stone_remnant" },
-		{ abilityname: "life_stealer_consume" }
+
 	],
 	[
 	    { abilityname: "dagger_throw" },
-		{ abilityname: "life_stealer_consume" },
-		{ abilityname: "life_stealer_consume" }
+
 	]
 ]
 
 var isHost = false;
-var time = 12;
+var rounds = 12;
 
 function ClearPanel(p) {
 	$.Each(p.Children(), function (panel) {
@@ -46,7 +42,7 @@ function SetupTooltips(panel) {
 }
 
 function OnDropDownChanged() {
-	time = parseInt($("#TimeDropDown").GetSelected().id);
+	rounds = parseInt($("#TimeDropDown").GetSelected().id);
 }
 
 (function () {
@@ -64,7 +60,7 @@ function OnDropDownChanged() {
 		}
 		gameTable["randomSkills"] = $("#RandomSkills").enabled;
 		gameTable["anomalies"] = $("#Anomalies").enabled;
-		gameTable["time"] = time;
+		gameTable["rounds"] = rounds;
 
 		GameEvents.SendCustomGameEventToServer( "reflex_start_game", gameTable);
 	}))
@@ -141,7 +137,7 @@ function OnDropDownChanged() {
 		}
 		gameTable["randomSkills"] = $("#RandomSkills").enabled;
 		gameTable["anomalies"] = $("#Anomalies").enabled;
-		gameTable["time"] = time;
+		gameTable["rounds"] = rounds;
 
 		GameEvents.SendCustomGameEventToServer( "reflex_start_game", gameTable);
 	}));
