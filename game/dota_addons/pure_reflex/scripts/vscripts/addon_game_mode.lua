@@ -111,7 +111,6 @@ function NinjaClaasicGameMode:InitGameMode()
   badGuysScore = 0
   timeToStart = 400
   GameRules:SetHeroSelectionTime(120)
-  GameRules:SetPreGameTime(16)
   GameRules:GetGameModeEntity():SetThink("GameStartMsg", self, 0)
   GameRules:SetSameHeroSelectionEnabled(true)
   GameMode:SetTopBarTeamValuesOverride (true)
@@ -168,6 +167,11 @@ function NinjaClaasicGameMode:FinishGameSetup(args)
   for i=0,5 do
     table.insert(BUILD, args[tostring(i)])
   end
+  GameRules:SetPreGameTime(16)
+  GameRules:SendCustomMessage("#Welcome", 0, 0)
+  Timers:CreateTimer( 16, function()
+  NinjaClaasicGameMode:Respawn()
+  end)
 
   RANDOM_SKILLS = args.randomSkills
   ANOMALIES = args.anomalies
@@ -239,8 +243,8 @@ function NinjaClaasicGameMode:Time ()
         else
           local player = nil
             for i = 0, 9, 1 do
-              if PlayerResource:GetPlayer(i) ~= nil and player:GetAssignedHero() then
               player = PlayerResource:GetPlayer(i)
+              if PlayerResource:GetPlayer(i) ~= nil and player:GetAssignedHero() then
               local hero = player:GetAssignedHero()
               hero:AddNewModifier(hero, nil, "modifier_invulnerable", { duration = 6 })
               hero:AddNewModifier(hero, nil, "modifier_stunned", { duration = 6 })
@@ -265,9 +269,7 @@ function NinjaClaasicGameMode:OnGameRulesStateChange(keys)
   if GameRules:State_Get() == DOTA_GAMERULES_STATE_HERO_SELECTION then
   	timeToStart = 15
     DeepPrintTable(keys)
-    GameRules:SendCustomMessage("#Welcome", 0, 0)
-  	GameRules:GetGameModeEntity():SetThink("Respawn", self, 15)
-
+  	
     Timers:CreateTimer(1, function()
         for i = 0, 9, 1 do
           if PlayerResource:GetPlayer(i) ~= nil and GameRules:PlayerHasCustomGameHostPrivileges(PlayerResource:GetPlayer(i)) then
@@ -374,10 +376,7 @@ function NinjaClaasicGameMode:Respawn()
   GridNav:RegrowAllTrees()
   roundGoing = true
   NinjaClaasicGameMode:Time()
-
-
   
-  local player = PlayerResource:GetPlayer(i)
   
   if ROUND == 1 then
     ListenToGameEvent('entity_killed', Dynamic_Wrap(NinjaClaasicGameMode, 'hero_killed'), self)
@@ -388,6 +387,7 @@ function NinjaClaasicGameMode:Respawn()
   Notifications:TopToAll({text="#Round", style=GameRules.styles.rounds, duration=3.0})
   Notifications:TopToAll({text=ROUND, style=GameRules.styles.rounds, continue=true })
   for i = 0, 9, 1 do
+    local player = PlayerResource:GetPlayer(i)
     if player ~= nil and player:GetAssignedHero() then
       player = PlayerResource:GetPlayer(i)
       PlayerResource:SetGold(i, 0, false)
