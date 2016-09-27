@@ -27,6 +27,7 @@ var slots = [
 ]
 
 var isHost = false;
+var time = 12;
 
 function ClearPanel(p) {
 	$.Each(p.Children(), function (panel) {
@@ -44,6 +45,10 @@ function SetupTooltips(panel) {
 	}));
 }
 
+function OnDropDownChanged() {
+	time = parseInt($("#TimeDropDown").GetSelected().id);
+}
+
 (function () {
 	$("#PlayButton").visible = false;
 	GameEvents.Subscribe("reflex_set_host", (function () {
@@ -59,6 +64,7 @@ function SetupTooltips(panel) {
 		}
 		gameTable["randomSkills"] = $("#RandomSkills").enabled;
 		gameTable["anomalies"] = $("#Anomalies").enabled;
+		gameTable["time"] = time;
 
 		GameEvents.SendCustomGameEventToServer( "reflex_start_game", gameTable);
 	}))
@@ -135,6 +141,7 @@ function SetupTooltips(panel) {
 		}
 		gameTable["randomSkills"] = $("#RandomSkills").enabled;
 		gameTable["anomalies"] = $("#Anomalies").enabled;
+		gameTable["time"] = time;
 
 		GameEvents.SendCustomGameEventToServer( "reflex_start_game", gameTable);
 	}));

@@ -12,6 +12,7 @@ require( "libraries/physics" )
 BUILD = {}
 RANDOM_SKILLS = false
 ANOMALIES = false
+TIME = 12 * 60
 
 local noData = true
 
@@ -175,6 +176,9 @@ function NinjaClaasicGameMode:FinishGameSetup(args)
 
   RANDOM_SKILLS = args.randomSkills
   ANOMALIES = args.anomalies
+
+  TIME = args.time * 60
+  print(TIME)
 
   noData = false
 
