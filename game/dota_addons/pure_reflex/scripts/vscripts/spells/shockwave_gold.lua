@@ -7,12 +7,14 @@ function shockwave( args )
 print(random)
   local injump_speed = 1
   local injump_distance = 1
+  local sound = "Hero_Magnataur.ShockWave.Cast"
   if caster:HasModifier("modifier_injump") then
+  sound = "Hero_Axe.CounterHelix_Blood_Chaser"
   injump_speed = 470
   injump_distance = 300
   end
   
-  caster:EmitSound("Hero_Magnataur.ShockWave.Cast")
+  caster:EmitSound(sound)
 
 -- dummys
   local target = args.target  

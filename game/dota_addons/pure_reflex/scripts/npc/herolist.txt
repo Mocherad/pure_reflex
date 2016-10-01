@@ -8,4 +8,5 @@
 
 	"npc_dota_hero_juggernaut"			"-1"
 	"npc_dota_hero_phantom_assassin"    "-1"
+	"npc_dota_hero_pudge"    "-1"
 }

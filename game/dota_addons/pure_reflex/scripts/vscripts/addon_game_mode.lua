@@ -28,17 +28,20 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_dota_hero_legion_commander", context)  
   PrecacheUnitByNameSync("npc_dota_hero_earth_spirit", context)  
   PrecacheUnitByNameSync("npc_dota_hero_bloodseeker", context)  
+  PrecacheUnitByNameSync("npc_dota_hero_pudge", context) 
+
   
   PrecacheResource( "particle","particles/units/heroes/hero_elder_titan/elder_titan_earth_splitter.vpcf", context) 
 
+  PrecacheResource( "particle","particles/hook_gold/hook_gold_main.vpcf", context) 
   PrecacheResource( "particle","particles/shockwave/shockwave.vpcf", context) 
   PrecacheResource( "particle","particles/shockwave_gold/shockwave_gold.vpcf", context) 
   PrecacheResource( "particle","particles/refraction/refraction.vpcf", context) 
   PrecacheResource( "particle","particles/refraction_gold/refraction_gold.vpcf", context) 
   PrecacheResource( "particle","particles/refraction_gold/refraction_gold.vpcf", context) 
-  PrecacheResource( "particle"," particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/phantom_assassin_stifling_dagger_arcana.vpcf", context) 
+  PrecacheResource( "particle","particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/phantom_assassin_stifling_dagger_arcana.vpcf", context) 
 
-  PrecacheResource( "particle","particles/shockwave_critical/shockwave_critical.vpcf", context) 
+  PrecacheResource( "particle","particles/units/heroes/hero_pudge/pudge_meathook.vpcf", context) 
   PrecacheResource( "particle","particles/stone_remnant/stone_remnant.vpcf", context) 
   PrecacheResource( "particle","particles/units/heroes/hero_medusa/medusa_stone_gaze_debuff_stoned.vpcf", context) 
 
@@ -46,7 +49,9 @@ function Precache( context )
 
   PrecacheResource( "soundfile", "soundevents/custom_sounds.vsndevts", context)
   PrecacheResource( "soundfile", "soundevents/game_sounds_items.vsndevts", context) 
-  PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts", context)
+  PrecacheResource("soundfile",  "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts", context)
+  PrecacheResource("soundfile",  "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts", context)
+  PrecacheResource("soundfile",  "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts", context)
 
   PrecacheModel("models/items/juggernaut/thousand_faces_wraps/thousand_faces_wraps.mdl", context )
   PrecacheModel("models/items/juggernaut/thousand_faces_hakama/thousand_faces_hakama.mdl", context )
@@ -121,7 +126,7 @@ function NinjaClaasicGameMode:InitGameMode()
   GameRules:SetGoldPerTick(0)
   GameRules:SetUseBaseGoldBountyOnHeroes(false)
   GameMode:SetCameraDistanceOverride(1360)
-  GameRules:SetFirstBloodActive(false)
+  GameRules:SetFirstBloodActive(true)
   GameRules:GetGameModeEntity():SetHUDVisible( DOTA_HUD_VISIBILITY_INVENTORY_SHOP, false )
   GameRules:GetGameModeEntity():SetHUDVisible( DOTA_HUD_VISIBILITY_INVENTORY_COURIER, false )
   GameRules:GetGameModeEntity():SetHUDVisible( DOTA_HUD_VISIBILITY_INVENTORY_QUICKBUY, false )
@@ -179,7 +184,7 @@ function NinjaClaasicGameMode:FinishGameSetup(args)
   RANDOM_SKILLS = args.randomSkills
   ANOMALIES = args.anomalies
 
-  ROUDS = args.rounds
+  ROUNDS = args.rounds
   print(ROUNDS)
 
   noData = false
