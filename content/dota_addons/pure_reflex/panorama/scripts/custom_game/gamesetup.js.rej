@@ -1,0 +1,42 @@
+diff a/content/dota_addons/pure_reflex/panorama/scripts/custom_game/gamesetup.js b/content/dota_addons/pure_reflex/panorama/scripts/custom_game/gamesetup.js	(rejected hunks)
+@@ -1,33 +1,29 @@
+ var slots = [
+ 	[
+ 	    { abilityname: "refraction" },
+-		{ abilityname: "mirana_leap" },
+-		{ abilityname: "life_stealer_consume" }
++		{ abilityname: "leap" },
++
+ 	],
+ 	[
+ 	    { abilityname: "blink" },
+-		{ abilityname: "mirana_leap_datadriven" },
+-		{ abilityname: "life_stealer_consume" }
++
+ 	],
+ 	[
+ 	    { abilityname: "shockwave" },
+-		{ abilityname: "life_stealer_consume" },
+-		{ abilityname: "life_stealer_consume" }
++
+ 	],
+ 		[
+ 	    { abilityname: "stone_remnant" },
+-		{ abilityname: "stone_remnant" },
+-		{ abilityname: "life_stealer_consume" }
++
+ 	],
+ 	[
+ 	    { abilityname: "dagger_throw" },
+-		{ abilityname: "life_stealer_consume" },
+-		{ abilityname: "life_stealer_consume" }
++
+ 	]
+ ]
+ 
+ var isHost = false;
+-var time = 12;
++var rounds = 12;
+ 
+ function ClearPanel(p) {
+ 	$.Each(p.Children(), function (panel) {

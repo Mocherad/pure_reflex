@@ -101,12 +101,15 @@ function Precache( context )
   PrecacheModel("models/items/juggernaut/dc_backupdate4/dc_backupdate4.mdl", context )
   PrecacheModel("models/items/juggernaut/dc_headupdate/dc_headupdate.mdl", context )
   PrecacheModel("models/items/juggernaut/dc_legsupdate5/dc_legsupdate5.mdl", context )
+   print("cash comlited")
+
 end
 
 -- Create the game mode when we activate
 function Activate()
   GameRules.AddonTemplate = NinjaClaasicGameMode()
   GameRules.AddonTemplate:InitGameMode()
+  print("mod activeted")
 end
 
 function NinjaClaasicGameMode:InitGameMode()
@@ -167,12 +170,14 @@ function NinjaClaasicGameMode:InitGameMode()
 
   self.vUserIds = {}
   self.splIds = {}
+  print("mod inited")
 end
 
 function NinjaClaasicGameMode:UpdateSkill(args)
   local abilities = CustomNetTables:GetTableValue("abilities","abilities")
   abilities[tostring(args.slot)] = args.abilityname
   CustomNetTables:SetTableValue("abilities","abilities",abilities)
+   print("UpdateSkill")
 end
 
 function NinjaClaasicGameMode:FinishGameSetup(args)
@@ -194,6 +199,7 @@ function NinjaClaasicGameMode:FinishGameSetup(args)
   noData = false
 
   NinjaClaasicGameMode:CreateHeroes()
+    print("FinishGameSetup")
 end
 
 function NinjaClaasicGameMode:InitHero(hero)
@@ -217,7 +223,7 @@ function NinjaClaasicGameMode:InitHero(hero)
     end
   end
 
-
+print("InitHero")
 end
 
 function NinjaClaasicGameMode:CreateHeroes()
@@ -240,7 +246,7 @@ function NinjaClaasicGameMode:CreateHeroes()
       hero:SetHasInventory( false )
     end
   end
-  -- end
+  print("CreateHeroes")
 end
 
 function NinjaClaasicGameMode:GameStartMusic ()
@@ -284,7 +290,7 @@ function NinjaClaasicGameMode:OnGameRulesStateChange(keys)
   if GameRules:State_Get() == DOTA_GAMERULES_STATE_HERO_SELECTION then
   	timeToStart = 15
     DeepPrintTable(keys)
-  	
+  	print("OnGameRulesStateChange 1")
     Timers:CreateTimer(1, function()
         for i = 0, 9, 1 do
           if PlayerResource:GetPlayer(i) ~= nil and GameRules:PlayerHasCustomGameHostPrivileges(PlayerResource:GetPlayer(i)) then
@@ -293,8 +299,9 @@ function NinjaClaasicGameMode:OnGameRulesStateChange(keys)
         end 
       end
     )
-
+  print("OnGameRulesStateChange 2")
   elseif GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS and noData == true then
+    print("OnGameRulesStateChange 3")
     for i = 0, 9, 1 do
       if PlayerResource:GetPlayer(i) ~= nil and GameRules:PlayerHasCustomGameHostPrivileges(PlayerResource:GetPlayer(i)) then
         CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(i), "reflex_force_start_game", {})
@@ -313,6 +320,7 @@ function NinjaClaasicGameMode:OnConnectFull(keys)
   self.vUserIds[userID] = ply
   self.splIds[spl] = ply
   DeepPrintTable(keys)
+print("OnConnectFull")
  
 end
 
@@ -370,6 +378,7 @@ function NinjaClaasicGameMode:HeroGainedLevel(keys)
 end
 
 function NinjaClaasicGameMode:HeroPicked(keys)
+  print("HeroPicked")
   local hero = EntIndexToHScript (keys.heroindex)
   local player = EntIndexToHScript (keys.player)
   local playerId = player:GetPlayerID()

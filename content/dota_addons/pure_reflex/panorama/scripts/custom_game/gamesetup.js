@@ -1,7 +1,6 @@
 var slots = [
 	[
 	    { abilityname: "refraction" },
-		{ abilityname: "leap" },
 
 	],
 	[
@@ -10,7 +9,6 @@ var slots = [
 	],
 	[
 	    { abilityname: "shockwave" },
-	    { abilityname: "pudge_meat_hook_lua" },
 
 	],
 		[
