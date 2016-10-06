@@ -28,11 +28,15 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_dota_hero_legion_commander", context)  
   PrecacheUnitByNameSync("npc_dota_hero_earth_spirit", context)  
   PrecacheUnitByNameSync("npc_dota_hero_bloodseeker", context)  
-  PrecacheUnitByNameSync("npc_dota_hero_pudge", context) 
+  PrecacheUnitByNameSync("npc_dota_hero_vengefulspirit", context) 
 
   
   PrecacheResource( "particle","particles/units/heroes/hero_elder_titan/elder_titan_earth_splitter.vpcf", context) 
 
+  PrecacheResource( "particle","particles/swap_gold/swap_gold.vpcf", context) 
+  PrecacheResource( "particle","particles/swap_gold/swap_gold_target.vpcf", context) 
+  PrecacheResource( "particle","particles/swap/swap.vpcf", context) 
+  PrecacheResource( "particle","particles/swap/swap_target.vpcf", context) 
   PrecacheResource( "particle","particles/hook_gold/hook_gold_main.vpcf", context) 
   PrecacheResource( "particle","particles/shockwave/shockwave.vpcf", context) 
   PrecacheResource( "particle","particles/shockwave_gold/shockwave_gold.vpcf", context) 
