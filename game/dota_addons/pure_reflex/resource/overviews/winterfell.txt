@@ -1,8 +1,0 @@
-winterfell
-{
-	material materials/overviews/winterfell.vmat
-	pos_x -1536
-	pos_y 1344
-	scale 3.625
-}
-

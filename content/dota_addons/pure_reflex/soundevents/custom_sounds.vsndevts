@@ -324,7 +324,7 @@
                     {
                         "value"
                         {
-                              "value0"        "sounds/music/deadmau5_01/music/battle_01.vsnd"
+                              "value0"        "sounds/music/purereflex_clubbed_to_death.vsnd"
                         }
                     }
                     "volume"            {   "value"     "6.00000"  }
@@ -355,7 +355,7 @@
                     {
                         "value"
                         {
-                              "value0"        "sounds/music/dsadowski_01/music/battle_01.vsnd"
+                              "value0"        "sounds/music/purereflex_mk01.vsnd"
                         }
                     }
                     "volume"            {   "value"     "6.00000"  }
@@ -386,7 +386,7 @@
                     {
                         "value"
                         {
-                              "value0"        "sounds/music/jbrice_01/music/battle_02_1.vsnd"
+                              "value0"        "sounds/music/purereflex_clubbed_to_death.vsnd"
                         }
                     }
                     "volume"            {   "value"     "6.00000"  }
@@ -417,7 +417,7 @@
                     {
                         "value"
                         {
-                              "value0"        "sounds/music/dsadowski_01/music/battle_03.vsnd"
+                              "value0"        "sounds/music/purereflex_reptile_theme.vsnd"
                         }
                     }
                     "volume"            {   "value"     "6.00000"  }

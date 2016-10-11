@@ -64,23 +64,22 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_CUSTOM"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CUSTOM"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"BaseClass"						"ability_lua"
 		"MaxLevel" 						"1"
-		"AbilityTextureName"			"vengefulspirit_nether_swap"
+		"AbilityTextureName"			"swap"
 		"ScriptFile"					"scripts/vscripts/spells/swap.lua"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"700"
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastRange"				"900"
+		"AbilityCastPoint"				"0.01"
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"3"
+		"AbilityCooldown"				"4"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -93,7 +92,7 @@
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"tooltip_range"					"700"
+				"tooltip_range"					"900"
 			}
 			"02"
 			{
@@ -110,23 +109,22 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_CUSTOM"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CUSTOM"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"BaseClass"						"ability_lua"
 		"MaxLevel" 					  	"1"
-		"AbilityTextureName"			"vengefulspirit_nether_swap"
+		"AbilityTextureName"			"swap_gold"
 		"ScriptFile"					"scripts/vscripts/spells/swap_gold.lua"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"700"
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastRange"				"900"
+		"AbilityCastPoint"				"0.01"
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"3"
+		"AbilityCooldown"				"4"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -139,7 +137,7 @@
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"tooltip_range"					"700"
+				"tooltip_range"					"900"
 			}
 			"02"
 			{
@@ -634,15 +632,15 @@
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"shockwave"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK_EVENT"
 		"MaxLevel"						"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"1200"
-		"AbilityCastPoint"				"0.2"
-		"AnimationPlaybackRate" 		"0.9"
+		"AbilityCastPoint"				"0.15"
+		"AnimationPlaybackRate" 		"1.2"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -689,15 +687,15 @@
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"shockwave_gold"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK_EVENT"
 		"MaxLevel"						"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"1200"
-		"AbilityCastPoint"				"0.2"
-		"AnimationPlaybackRate" 		"0.9"
+		"AbilityCastPoint"				"0.15"
+		"AnimationPlaybackRate" 		"1.2"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -742,17 +740,72 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"shockwave"
+		"AbilityTextureName"			"boomerang"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK_EVENT"
 		"MaxLevel"						"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"1400"
-		"AbilityCastPoint"				"0.2"
-		"AnimationPlaybackRate" 		"0.9"
+		"AbilityCastRange"				"1200"
+		"AbilityCastPoint"				"0.15"
+		"AnimationPlaybackRate" 		"1.2"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"2.2"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+
+			"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"speed"					"1900"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"range"					"1200"
+			}
+		}
+
+	
+       
+		"OnSpellStart"
+		{
+		
+			"RunScript"
+			{    
+				"ScriptFile"			"scripts/vscripts/spells/boomerang.lua"
+				"Function"				"boomerang"
+				"Target"				"POINT"
+			}
+
+			
+		}
+
+	}
+"boomerang_gold"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"boomerang_gold"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK_EVENT"
+		"MaxLevel"						"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"1200"
+		"AbilityCastPoint"				"0.15"
+		"AnimationPlaybackRate" 		"1.2"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -767,22 +820,23 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"speed"					"2000"
+				"speed"					"1900"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"range"					"1400"
+				"range"					"1200"
 			}
 		}
 
-
+	
+       
 		"OnSpellStart"
 		{
 		
 			"RunScript"
 			{    
-				"ScriptFile"			"scripts/vscripts/spells/boomerang.lua"
+				"ScriptFile"			"scripts/vscripts/spells/boomerang_gold.lua"
 				"Function"				"boomerang"
 				"Target"				"POINT"
 			}
@@ -798,7 +852,7 @@
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	"AbilityTextureName"			"blink"
 	"MaxLevel"						"1"
 
@@ -900,7 +954,7 @@
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	"AbilityTextureName"			"blink_gold"
 	"MaxLevel"						"1"
 
@@ -1407,7 +1461,7 @@
 					{
 					"ModifierName"	"modifier_on_respawn_protect_active"
 					"Target" 		"CASTER"
-					"Duration"		"15"
+					"Duration"		"17"
 					}
 				}
 
@@ -1418,7 +1472,7 @@
 							"IsHidden"				"1"
 							"Passive"				"1"
 							"TextureName"			"medusa_mana_shield"
-							"Duration"				"15"
+							"Duration"				"17"
 							
 							"EffectName"		"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
 							"EffectAttachType"	"follow_origin"
@@ -1889,4 +1943,5 @@
 		}
 	
 	}
+
 }

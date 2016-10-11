@@ -72,7 +72,7 @@ local projectile = {
         local damageTable = {
                         victim = target,
                         attacker = caster,
-                        damage = caster:GetAverageTrueAttackDamage(),
+                        damage = 999,
                         damage_type = DAMAGE_TYPE_PHYSICAL,
                 }
         ApplyDamage(damageTable)

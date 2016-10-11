@@ -7,11 +7,11 @@ function boomerang( args )
 print(random)
   local injump_speed = 1
   local injump_distance = 1
-  local sound = "Hero_Magnataur.ShockWave.Cast"
+  local sound = "Hero_Enchantress.Impetus"
   if caster:HasModifier("modifier_injump") then
-  sound = "Hero_Axe.CounterHelix_Blood_Chaser"
-  injump_speed = 470
-  injump_distance = 300
+  sound = "Hero_Enchantress.Impetus"
+  injump_speed = 270
+  injump_distance = 150
   end
   
   caster:EmitSound(sound)
@@ -29,79 +29,52 @@ print(random)
   dummys:SetPhysicsFriction(0)
   dummys:SetGroundBehavior(PHYSICS_GROUND_LOCK)
   dummys:PreventDI(true)
-  dummys:SetPhysicsVelocity(caster:GetForwardVector() * (1900 + injump_speed))
+  dummys:SetPhysicsVelocity(caster:GetForwardVector() * (1600 + injump_speed))
   dummys:SetHullRadius(6)
   local vec1 = dummys:GetAbsOrigin()
   vec1.z = 0
   dummys:SetAbsOrigin( vec1 + (dummys:GetForwardVector() * 110) )
 -- skills
   dummys:FindAbilityByName("hide_sphere"):SetLevel(1) 
- 
+     local particle = ParticleManager:CreateParticle("particles/boomerang/boomerang.vpcf",PATTACH_ABSORIGIN_FOLLOW,dummys) 
+     --dummys:EmitSound("Hero_Shredder.Chakram")
+  Timers:CreateTimer( 0.3, function()
+            distance = caster:GetAbsOrigin() - dummys:GetAbsOrigin()
+            direction = distance:Normalized()
+            dummys:SetPhysicsAcceleration(direction * (1900 + injump_speed))
+            if dummys:IsAlive() then 
+             return 0.1
+           else
+            end
+            end)
+Timers:CreateTimer( 3.0, function()
+dummys:EmitSound("Hero_Shredder.TimberChain.Damage")
+UTIL_Remove(dummys)
+end)
 
+Timers:CreateTimer( 0.1, function()
 
-local projectile = {
-  EffectName = "particles/shockwave/shockwave.vpcf",
-  vSpawnOrigin = {unit=caster, attach="attach_attack1", offset=Vector(0,0,-40)},
-  fDistance = 1200 + injump_distance,
-  fStartRadius = 120,
-  fEndRadius = 120,
-  Source = caster,
-  vVelocity = vector * (1900 + injump_speed),
-  UnitBehavior = PROJECTILES_NOTHING,
-  bMultipleHits = true,
-  bIgnoreSource = true,
-  TreeBehavior = PROJECTILES_NOTHING,
-  bCutTrees = true,
-  WallBehavior = PROJECTILES_NOTHING,
-  GroundBehavior = PROJECTILES_NOTHING,
-  fGroundOffset = 80,
-  nChangeMax = 1,
-  bRecreateOnChange = true,
-  bZCheck = false,
-  bGroundLock = true,
-  bProvidesVision = true,
-  iVisionRadius = 400,
-  OnTreeHit = function(self, tree)
-  end,
-  OnFinish = function(self, pos)
-  UTIL_Remove(dummys)
-  local dummysb = CreateUnitByName('npc_dummy_boomerang', pos, false, nil, nil, caster:GetTeam())
-  dummysb:SetOwner(caster)
-    
-  -- skills
-  -- dummysb:FindAbilityByName("hide_dummy"):SetLevel(1) 
-  dummysb:FindAbilityByName("shockwave"):SetLevel(1) 
-  dummysb:CastAbilityOnPosition(caster:GetOrigin(), dummysb:FindAbilityByName("shockwave"), caster:GetPlayerOwnerID())
-  end,
-  UnitTest = function(self, unit) return unit:GetUnitName() ~= "npc_dummy_unit" and unit:GetTeamNumber() ~= caster:GetTeamNumber() or unit:GetUnitName() == "npc_dummy_unit" end,
-  OnUnitHit = function(self, unit)
-        local target = unit
-        local damageTable = {
-                        victim = target,
-                        attacker = caster,
-                        damage = caster:GetAverageTrueAttackDamage(),
-                        damage_type = DAMAGE_TYPE_PHYSICAL,
-                }
-        ApplyDamage(damageTable)
-
-        if unit:IsHero() then
-          
-
-        elseif unit:GetUnitName() == "npc_dummy_sphere" then
-           unit:EmitSound("Hero_Tinker.LaserImpact")
-          
-        end
-  end
-}
-
-Projectiles:CreateProjectile(projectile)
-   
-Timers:CreateTimer( 0.3, function()
   if dummys:IsAlive() then 
-    return 0.2
+    local position = dummys:GetAbsOrigin()
+    local found_targets = FindUnitsInRadius(caster:GetTeamNumber(), position, nil, 95, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+    local damageTable = {
+             attacker = caster,
+             damage = 999,
+             damage_type = DAMAGE_TYPE_PHYSICAL,
+             }
+    for _,unitonfire in pairs(found_targets) do
+             damageTable.victim = unitonfire
+             ApplyDamage(damageTable)
+             unitonfire:EmitSound("Hero_Shredder.Chakram.Target")
+          if unitonfire:GetUnitName() == "npc_dummy_sphere" then
+           unitonfire:EmitSound("Hero_Tinker.LaserImpact")
+     end
+    end
+    GridNav:DestroyTreesAroundPoint( position, 95, true )
+    return 0.1
+      
   else
-    projectile:Destroy(projID)
-    local dummysb = CreateUnitByName('npc_dummy_boomerang', caster:GetAbsOrigin(), false, nil, nil, caster:GetTeam())
-  end
-end )
+  
+    end
+end)
 end

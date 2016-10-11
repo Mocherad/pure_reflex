@@ -72,13 +72,13 @@ local projectile = {
         local damageTable = {
                         victim = target,
                         attacker = caster,
-                        damage = caster:GetAverageTrueAttackDamage(),
+                        damage = 999,
                         damage_type = DAMAGE_TYPE_PHYSICAL,
                 }
         ApplyDamage(damageTable)
 
         if unit:IsHero() then
-          
+  
 
         elseif unit:GetUnitName() == "npc_dummy_sphere" then
            unit:EmitSound("Hero_Tinker.LaserImpact")

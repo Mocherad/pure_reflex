@@ -12,6 +12,7 @@ function Blink(keys)
         if difference:Length2D() > range then
                 point = casterPos + (point - casterPos):Normalized() * range
         end
-
-        FindClearSpaceForUnit(caster, point, false)     
+        
+        FindClearSpaceForUnit(caster, point, false) 
+        caster:Stop()    
 end

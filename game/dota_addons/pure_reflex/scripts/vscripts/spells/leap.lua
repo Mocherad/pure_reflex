@@ -21,6 +21,8 @@ end
 function LeapHorizonal( keys )
         local caster = keys.target
         local ability = keys.ability
+        
+        ProjectileManager:ProjectileDodge(caster)
 
         if ability.leap_traveled < ability.leap_distance then
                 caster:SetAbsOrigin(caster:GetAbsOrigin() + ability.leap_direction * ability.leap_speed)
@@ -35,6 +37,7 @@ function LeapVertical( keys )
         local caster = keys.target
         local ability = keys.ability
 
+        ProjectileManager:ProjectileDodge(caster)
         -- For the first half of the distance the unit goes up and for the second half it goes down
         if ability.leap_traveled < ability.leap_distance/1.8 then
                 -- Go up

@@ -59,6 +59,8 @@ function swap:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local hTarget = self:GetCursorTarget()
 
+	ProjectileManager:ProjectileDodge(hCaster)
+	ProjectileManager:ProjectileDodge(hTarget)
 	if hCaster == nil or hTarget == nil or hTarget:TriggerSpellAbsorb( this ) then
 		return
 	end

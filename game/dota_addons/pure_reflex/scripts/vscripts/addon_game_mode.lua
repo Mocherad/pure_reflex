@@ -20,87 +20,44 @@ function Precache( context )
 
   PrecacheUnitByNameSync("npc_dota_hero_juggernaut", context)
   PrecacheUnitByNameSync("npc_dota_hero_phantom_assassin", context)
-  PrecacheUnitByNameSync("npc_dota_hero_invoker", context)
-  PrecacheUnitByNameSync("npc_dota_hero_templar_assassin", context)
-  PrecacheUnitByNameSync("npc_dota_hero_magnataur", context)
-  PrecacheUnitByNameSync("npc_dota_hero_queenofpain", context)
-  PrecacheUnitByNameSync("npc_dota_hero_phantom_assassin", context)
-  PrecacheUnitByNameSync("npc_dota_hero_legion_commander", context)  
-  PrecacheUnitByNameSync("npc_dota_hero_earth_spirit", context)  
-  PrecacheUnitByNameSync("npc_dota_hero_bloodseeker", context)  
-  PrecacheUnitByNameSync("npc_dota_hero_vengefulspirit", context) 
 
+   PrecacheResource( "particle","particles/shuriken_gold/shuriken_gold.vpcf", context)
   
-  PrecacheResource( "particle","particles/units/heroes/hero_elder_titan/elder_titan_earth_splitter.vpcf", context) 
+  PrecacheResource( "particle","particles/shuriken_gold/shuriken_gold.vpcf", context)
+  PrecacheResource( "particle","particles/boomerang/boomerang.vpcf", context)
 
   PrecacheResource( "particle","particles/swap_gold/swap_gold.vpcf", context) 
   PrecacheResource( "particle","particles/swap_gold/swap_gold_target.vpcf", context) 
   PrecacheResource( "particle","particles/swap/swap.vpcf", context) 
   PrecacheResource( "particle","particles/swap/swap_target.vpcf", context) 
-  PrecacheResource( "particle","particles/hook_gold/hook_gold_main.vpcf", context) 
+
   PrecacheResource( "particle","particles/shockwave/shockwave.vpcf", context) 
   PrecacheResource( "particle","particles/shockwave_gold/shockwave_gold.vpcf", context) 
+
   PrecacheResource( "particle","particles/refraction/refraction.vpcf", context) 
   PrecacheResource( "particle","particles/refraction_gold/refraction_gold.vpcf", context) 
-  PrecacheResource( "particle","particles/refraction_gold/refraction_gold.vpcf", context) 
+
   PrecacheResource( "particle","particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/phantom_assassin_stifling_dagger_arcana.vpcf", context) 
 
-  PrecacheResource( "particle","particles/units/heroes/hero_pudge/pudge_meathook.vpcf", context) 
   PrecacheResource( "particle","particles/stone_remnant/stone_remnant.vpcf", context) 
   PrecacheResource( "particle","particles/units/heroes/hero_medusa/medusa_stone_gaze_debuff_stoned.vpcf", context) 
 
   PrecacheResource( "particle","particles/econ/items/undying/undying_manyone/undying_pale_gold_tower_destruct_flashbang.vpcf", context)
 
-  PrecacheResource( "soundfile", "soundevents/custom_sounds.vsndevts", context)
-  PrecacheResource( "soundfile", "soundevents/game_sounds_items.vsndevts", context) 
+  PrecacheResource("soundfile",  "soundevents/custom_sounds.vsndevts", context)
+  PrecacheResource("soundfile",  "soundevents/game_sounds_items.vsndevts", context) 
   PrecacheResource("soundfile",  "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts", context)
   PrecacheResource("soundfile",  "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts", context)
   PrecacheResource("soundfile",  "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts", context)
+  PrecacheResource("soundfile",  "soundevents/game_sounds_heroes/game_sounds_shredder.vsndevts", context)
+  PrecacheResource("soundfile",  "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts", context)
+  PrecacheResource("soundfile",  "soundevents/game_sounds_heroes/game_sounds_templar_assassin.vsndevts", context)
+  PrecacheResource("soundfile",  "soundevents/game_sounds_heroes/game_sounds_queenofpain.vsndevts", context)
+  PrecacheResource("soundfile",  "soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts", context)
+  PrecacheResource("soundfile",  "soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts", context)
+  PrecacheResource("soundfile",  "soundevents/game_sounds_heroes/game_sounds_vengefulspirit.vsndevts", context)
 
-  PrecacheModel("models/items/juggernaut/thousand_faces_wraps/thousand_faces_wraps.mdl", context )
-  PrecacheModel("models/items/juggernaut/thousand_faces_hakama/thousand_faces_hakama.mdl", context )
-  PrecacheModel("models/items/juggernaut/thousand_faces_vest/thousand_faces_vest.mdl", context )
-  PrecacheModel("models/items/juggernaut/thousand_faces_mask/thousand_faces_mask.mdl", context )
-  PrecacheModel("models/items/juggernaut/weapon_bladefury512/weapon_bladefury512.mdl", context )
-  PrecacheModel("models/items/juggernaut/jugg_flag/jugg_flag.mdl", context )
-  PrecacheModel("models/items/juggernaut/thousand_faces_katana/thousand_faces_katana.mdl", context )
-  PrecacheModel("models/items/juggernaut/juggernaut_sword_cursed/juggernaut_sword_cursed.mdl", context )
-  PrecacheModel("models/items/juggernaut/dragon_sword.mdl", context )
-  PrecacheModel("models/items/juggernaut/armour_of_the_exiled_ronin/armour_of_the_exiled_ronin.mdl", context )
-  PrecacheModel("models/items/juggernaut/izoku/izoku.mdl", context )
-  PrecacheModel("models/items/juggernaut/sturdy_bracers_of_the_exiled_ronin/sturdy_bracers_of_the_exiled_ronin.mdl", context )
-  PrecacheModel("models/items/juggernaut/fire_of_the_exiled_ronin/fire_of_the_exiled_ronin.mdl", context )
-  PrecacheModel("models/items/juggernaut/burden_of_the_exiled_ronin/burden_of_the_exiled_ronin.mdl", context )
-  PrecacheModel("models/items/juggernaut/vestments_of_the_exiled_ronin/vestments_of_the_exiled_ronin.mdl", context )
-  PrecacheModel("models/items/juggernaut/leg_gaurds_of_kogu/leg_gaurds_of_kogu.mdl", context )
-  PrecacheModel("models/items/juggernaut/scowl_of_kogu/scowl_of_kogu.mdl", context )
-  PrecacheModel("models/items/juggernaut/the_discipline_of_kogu/the_discipline_of_kogu.mdl", context )
-  PrecacheModel("models/items/juggernaut/armor_of_kogu/armor_of_kogu.mdl", context )
-  PrecacheModel("models/items/juggernaut/bracers_of_kogu/bracers_of_kogu.mdl", context )
-  PrecacheModel("models/items/juggernaut/the_elegant_stroke/the_elegant_stroke.mdl", context )
-  PrecacheModel("models/items/juggernaut/wandering_demon_arms/wandering_demon_arms.mdl", context )
-  PrecacheModel("models/items/juggernaut/wandering_demon_mask/wandering_demon_mask.mdl", context )
-  PrecacheModel("models/items/juggernaut/wandering_demon_legs/wandering_demon_legs.mdl", context )
-  PrecacheModel("models/items/juggernaut/wandering_demon_sword/wandering_demon_sword.mdl", context )
-  PrecacheModel("models/items/juggernaut/wandering_demon_top/wandering_demon_top.mdl", context )
-  PrecacheModel("models/items/juggernaut/juggernaut_horse_sword/juggernaut_horse_sword.mdl", context )
-  PrecacheModel("models/items/juggernaut/jg_weapon_files2/jg_weapon_files2.mdl", context )
-  PrecacheModel("models/items/juggernaut/gifts_of_the_vanished_head/gifts_of_the_vanished_head.mdl", context )
-  PrecacheModel("models/items/juggernaut/gifts_of_the_vanished_weapon/gifts_of_the_vanished_weapon.mdl", context )
-  PrecacheModel("models/items/juggernaut/gifts_of_the_vanished_legs/gifts_of_the_vanished_legs.mdl", context )
-  PrecacheModel("models/items/juggernaut/gifts_of_the_vanished_arms/gifts_of_the_vanished_arms.mdl", context )
-  PrecacheModel("models/items/juggernaut/gifts_of_the_vanished_back/gifts_of_the_vanished_back.mdl", context )
-  PrecacheModel("models/items/juggernaut/bladesrunner_back/bladesrunner_back.mdl", context )
-  PrecacheModel("models/items/juggernaut/bladesrunner_legs/bladesrunner_legs.mdl", context )
-  PrecacheModel("models/items/juggernaut/bladesrunner_head/bladesrunner_head.mdl", context )
-  PrecacheModel("models/items/juggernaut/jadeserpent_weapon/jadeserpent_weapon.mdl", context )
-  PrecacheModel("models/items/juggernaut/bladesrunner_arms/bladesrunner_arms.mdl", context )
-  PrecacheModel("models/items/juggernaut/bladesrunner_weapon/bladesrunner_weapon.mdl", context )
-  PrecacheModel("models/items/juggernaut/dc_armsupdate/dc_armsupdate.mdl", context )
-  PrecacheModel("models/items/juggernaut/dc_weaponupdate/dc_weaponupdate.mdl", context )
-  PrecacheModel("models/items/juggernaut/dc_backupdate4/dc_backupdate4.mdl", context )
-  PrecacheModel("models/items/juggernaut/dc_headupdate/dc_headupdate.mdl", context )
-  PrecacheModel("models/items/juggernaut/dc_legsupdate5/dc_legsupdate5.mdl", context )
+
    print("cash comlited")
 
 end
@@ -395,7 +352,6 @@ end
 
 
 function NinjaClaasicGameMode:Respawn()
-
   EmitGlobalSound("DOTA_Item.DoE.Activate")
   GridNav:RegrowAllTrees()
   roundGoing = true
@@ -491,10 +447,10 @@ function NinjaClaasicGameMode:EndRoundCheck()
 			GameMode:SetTopBarTeamValue ( DOTA_TEAM_BADGUYS, badGuysScore)
 			GameMode:SetTopBarTeamValue ( DOTA_TEAM_GOODGUYS, goodGuysScore )
 			roundGoing = false
-			if badGuysScore == 15 then
+			if badGuysScore == ROUNDS then
 				NinjaClaasicGameMode:BadGuysVictory()
 			else
-				if goodGuysScore == 14 and badGuysScore == 14 then
+				if goodGuysScore == (ROUNDS-1) and badGuysScore == (ROUNDS-1) then
 					NinjaClaasicGameMode:lastRound()
 				else
 					GameRules:GetGameModeEntity():SetThink("Respawn", self, 5)
