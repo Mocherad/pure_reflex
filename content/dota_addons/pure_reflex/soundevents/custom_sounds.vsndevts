@@ -324,7 +324,7 @@
                     {
                         "value"
                         {
-                              "value0"        "sounds/music/purereflex_clubbed_to_death.vsnd"
+                              "value0"        "sounds/music/purereflex_mk01.vsnd"
                         }
                     }
                     "volume"            {   "value"     "6.00000"  }
@@ -386,7 +386,7 @@
                     {
                         "value"
                         {
-                              "value0"        "sounds/music/purereflex_clubbed_to_death.vsnd"
+                              "value0"        "sounds/music/purereflex_mk02.vsnd"
                         }
                     }
                     "volume"            {   "value"     "6.00000"  }
@@ -417,7 +417,7 @@
                     {
                         "value"
                         {
-                              "value0"        "sounds/music/purereflex_reptile_theme.vsnd"
+                              "value0"        "sounds/music/purereflex_mk03.vsnd"
                         }
                     }
                     "volume"            {   "value"     "6.00000"  }

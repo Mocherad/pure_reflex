@@ -52,7 +52,7 @@ dummys:EmitSound("Hero_Shredder.TimberChain.Damage")
 UTIL_Remove(dummys)
 end)
 
-Timers:CreateTimer( 0.1, function()
+Timers:CreateTimer( 0.01, function()
 
   if dummys:IsAlive() then 
     local position = dummys:GetAbsOrigin()
