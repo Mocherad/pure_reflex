@@ -56,6 +56,7 @@ function Precache( context )
   PrecacheResource("soundfile",  "soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts", context)
   PrecacheResource("soundfile",  "soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts", context)
   PrecacheResource("soundfile",  "soundevents/game_sounds_heroes/game_sounds_vengefulspirit.vsndevts", context)
+  PrecacheResource("soundfile",  "soundevents/game_sounds_heroes/game_sounds_enchantress.vsndevts", context)
 
 
    print("cash comlited")
@@ -141,6 +142,7 @@ function NinjaClaasicGameMode:FinishGameSetup(args)
   for i=0,5 do
     table.insert(BUILD, args[tostring(i)])
   end
+  EmitGlobalSound("start_gof_01")
   GameRules:SetPreGameTime(16)
   GameRules:SendCustomMessage("#Welcome", 0, 0)
   Timers:CreateTimer( 16, function()

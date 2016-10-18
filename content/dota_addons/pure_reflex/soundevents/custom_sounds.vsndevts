@@ -184,7 +184,7 @@
         }
     }
 }
-"gamestart.00"
+"start_gof_01"
 {
     "operator_stacks"
     {
@@ -200,7 +200,7 @@
                     {
                         "value"
                         {
-                              "value0"        "sounds/music/deadmau5_01/music/battle_01_end.vsnd"
+                              "value0"        "sounds/music/start_gof_01.vsnd"
                         }
                     }
                     "volume"            {   "value"     "6.00000"  }

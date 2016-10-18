@@ -1,12 +1,12 @@
 "AddonInfo"
 {
-	maps				"gods_of_arena doom dungeon"
+	maps				"gods_of_arena gods_of_arena2015 dungeon"
 	"IsPlayable"	"1"
 	"gods_of_arena"
 	{
 					"MaxPlayers"                    "10"
 	}
-	"doom"
+	"gods_of_arena2015"
 	{
 					"MaxPlayers"                    "10"
 	}

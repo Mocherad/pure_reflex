@@ -253,6 +253,7 @@
 				"MODIFIER_STATE_FROZEN" 						"MODIFIER_STATE_VALUE_ENABLED"
 				"MODIFIER_STATE_NO_HEALTH_BAR"					"MODIFIER_STATE_VALUE_ENABLED"
 				"MODIFIER_STATE_NOT_ON_MINIMAP_FOR_ENEMIES"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_PROPERTY_STUNNED"						"MODIFIER_STATE_VALUE_ENABLED"
 				}
 
 			   "Properties"
@@ -1607,6 +1608,12 @@
                                         }
                                 }
                         }
+                        "States"
+      					  {
+        
+          					"MODIFIER_STATE_NO_HEALTH_BAR"        "MODIFIER_STATE_VALUE_ENABLED"
+     
+        				}
                 }
         }
 	}
