@@ -27,7 +27,7 @@
     
     </script> 
 	<Panel>
-        <CustomUIElement type="HeroSelection" layoutfile="file://{resources}/layout/custom_game/gamesetup.xml" />
+        <CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/gamesetup.xml" />
         
         <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/barebones_notifications.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/action_bar.xml" />

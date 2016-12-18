@@ -102,6 +102,7 @@ function NinjaClaasicGameMode:InitGameMode()
   GameRules:GetGameModeEntity():SetHUDVisible( DOTA_HUD_VISIBILITY_INVENTORY_COURIER, false )
   GameRules:GetGameModeEntity():SetHUDVisible( DOTA_HUD_VISIBILITY_INVENTORY_QUICKBUY, false )
   GameRules:GetGameModeEntity():SetHUDVisible( DOTA_HUD_VISIBILITY_SHOP_SUGGESTEDITEMS, false )
+  GameRules:GetGameModeEntity():SetCustomGameForceHero("npc_dota_hero_wisp")
   GameMode:SetFixedRespawnTime(1)
   GameRules:SetHideKillMessageHeaders(false)
 
@@ -145,6 +146,7 @@ function NinjaClaasicGameMode:UpdateSkill(args)
 end
 
 function NinjaClaasicGameMode:FinishGameSetup(args)
+
   for i=0,5 do
     table.insert(BUILD, args[tostring(i)])
   end
@@ -163,7 +165,13 @@ function NinjaClaasicGameMode:FinishGameSetup(args)
 
   noData = false
 
-  NinjaClaasicGameMode:CreateHeroes()
+  GameRules:FinishCustomGameSetup()
+
+  Timers:CreateTimer(0.2, function (  )
+    NinjaClaasicGameMode:CreateHeroes()
+  end)
+
+  
     print("FinishGameSetup")
 end
 
@@ -210,19 +218,20 @@ function NinjaClaasicGameMode:CreateHeroes()
     if PlayerResource:GetPlayer(i) ~= nil then
       player = PlayerResource:GetPlayer(i)
       local hero = player:GetAssignedHero()
-      if hero == nil or hero:IsNull() then
-      local team = player:GetTeamNumber() 
-      print("team ".. team)
-      if team == 3 then 
-        hero = CreateHeroForPlayer('npc_dota_hero_phantom_assassin',player)
-        NinjaClaasicGameMode:InitHero(hero)
-      else
-        hero = CreateHeroForPlayer('npc_dota_hero_juggernaut',player)
-        NinjaClaasicGameMode:InitHero(hero)
+      if hero:GetUnitName() == "npc_dota_hero_wisp" then
+        local team = player:GetTeamNumber() 
+        print("team ".. team)
+        UTIL_Remove(hero)
+        if team == 3 then 
+          hero = PlayerResource:ReplaceHeroWith(i,'npc_dota_hero_phantom_assassin',0,0)
+          NinjaClaasicGameMode:InitHero(hero)
+        else
+          hero = PlayerResource:ReplaceHeroWith(i,'npc_dota_hero_juggernaut',0,0)
+          NinjaClaasicGameMode:InitHero(hero)
+        end
+        hero:SetHasInventory( false )
       end
-      hero:SetHasInventory( false )
     end
-  end
   end
   print("CreateHeroes")
 end
@@ -265,7 +274,7 @@ function NinjaClaasicGameMode:OnPlayerReconnected()
 end
 
 function NinjaClaasicGameMode:OnGameRulesStateChange(keys)
-  if GameRules:State_Get() == DOTA_GAMERULES_STATE_HERO_SELECTION then
+  if GameRules:State_Get() == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
   	timeToStart = 15
     DeepPrintTable(keys)
   	print("OnGameRulesStateChange 1")

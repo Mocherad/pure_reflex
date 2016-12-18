@@ -132,6 +132,8 @@ function OnDropDownChanged() {
 	}
 
 	$("#PlayButton").SetPanelEvent("onactivate", (function () {
+		Game.ShufflePlayerTeamAssignments();
+		Game.AutoAssignPlayersToTeams();
 		var gameTable = {};
 		for (var i = 0; i < 5; i++) {
 			gameTable[i.toString()] = $("#Abilities").FindChildTraverse("AbilitySlot" + i).FindChildTraverse("AbilityImage").abilityname;
