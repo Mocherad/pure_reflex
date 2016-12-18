@@ -167,7 +167,7 @@ function NinjaClaasicGameMode:FinishGameSetup(args)
 
   GameRules:FinishCustomGameSetup()
 
-  Timers:CreateTimer(0.2, function (  )
+  Timers:CreateTimer(0.3, function (  )
     NinjaClaasicGameMode:CreateHeroes()
   end)
 
