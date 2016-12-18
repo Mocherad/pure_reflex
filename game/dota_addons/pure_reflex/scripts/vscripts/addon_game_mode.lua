@@ -83,7 +83,6 @@ end
 
 -- Create the game mode when we activate
 function Activate()
-  SendToServerConsole( 'dota_create_fake_clients 3' )
   GameRules.AddonTemplate = NinjaClaasicGameMode()
   GameRules.AddonTemplate:InitGameMode()
   print("mod activeted")
