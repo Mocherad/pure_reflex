@@ -7,7 +7,7 @@ end
 require("libraries/timers")
 require("libraries/projectiles")
 require("libraries/notifications")
-require( "libraries/physics" )
+require( "libraries/physics")
 
 BUILD = {}
 RANDOM_SKILLS = false
@@ -21,10 +21,15 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_dota_hero_juggernaut", context)
   PrecacheUnitByNameSync("npc_dota_hero_phantom_assassin", context)
 
-   PrecacheResource( "particle","particles/shuriken_gold/shuriken_gold.vpcf", context)
+  PrecacheResource( "particle","particles/econ/items/magnataur/shock_of_the_anvil/magnataur_shockanvil.vpcf", context)
+  PrecacheResource( "particle","particles/deadwave_gold/deadwave_gold.vpcf", context)
+  PrecacheResource( "particle","particles/deadwave/deadwave.vpcf", context)
   
   PrecacheResource( "particle","particles/shuriken_gold/shuriken_gold.vpcf", context)
   PrecacheResource( "particle","particles/boomerang/boomerang.vpcf", context)
+
+  PrecacheResource( "particle","particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf", context)
+  PrecacheResource( "particle","particles/dagger_hephaestus/dagger_hephaestus.vpcf", context)
 
   PrecacheResource( "particle","particles/swap_gold/swap_gold.vpcf", context) 
   PrecacheResource( "particle","particles/swap_gold/swap_gold_target.vpcf", context) 
@@ -36,6 +41,7 @@ function Precache( context )
 
   PrecacheResource( "particle","particles/refraction/refraction.vpcf", context) 
   PrecacheResource( "particle","particles/refraction_gold/refraction_gold.vpcf", context) 
+  PrecacheResource( "particle","particles/refraction_hephaestus/refraction_hephaestus.vpcf", context) 
 
   PrecacheResource( "particle","particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/phantom_assassin_stifling_dagger_arcana.vpcf", context) 
 
@@ -135,7 +141,7 @@ function NinjaClaasicGameMode:UpdateSkill(args)
   local abilities = CustomNetTables:GetTableValue("abilities","abilities")
   abilities[tostring(args.slot)] = args.abilityname
   CustomNetTables:SetTableValue("abilities","abilities",abilities)
-   print("UpdateSkill")
+  print("UpdateSkill")
 end
 
 function NinjaClaasicGameMode:FinishGameSetup(args)
@@ -162,6 +168,7 @@ function NinjaClaasicGameMode:FinishGameSetup(args)
 end
 
 function NinjaClaasicGameMode:InitHero(hero)
+  local steamID = PlayerResource:GetSteamAccountID(hero:GetPlayerID())
   for i=0,16 do
     if hero:GetAbilityByIndex(i) then
       hero:RemoveAbility(hero:GetAbilityByIndex(i):GetName())
@@ -169,13 +176,22 @@ function NinjaClaasicGameMode:InitHero(hero)
   end
   for k,v in pairs(BUILD) do
     if hero:GetUnitName() == "npc_dota_hero_juggernaut" then
-      hero:AddAbility(v.."_gold")
+       if hero:HasAbility(v.."_gold") then
+       --
+       else
+       hero:AddAbility(v.."_gold")
+       end
     else
-      hero:AddAbility(v)
+       if hero:HasAbility(v) then
+       --
+       else
+       hero:AddAbility(v)
+       end
     end
   end
   hero:AddAbility("on_respawn_protect")
   hero:AddAbility("blood_spatter")
+  hero:AddAbility("on_status_check")
   for i=0,16 do
     if hero:GetAbilityByIndex(i) then
       hero:GetAbilityByIndex(i):SetLevel(1)
@@ -189,10 +205,12 @@ function NinjaClaasicGameMode:CreateHeroes()
   --print("Game State Changed: " .. GameRules:State_Get())
   --print("Hero Selection State: " .. DOTA_GAMERULES_STATE_HERO_SELECTION)
   -- if GameRules:State_Get() == 3 then
-    -- print("Entered IF")
+  -- print("Entered IF")
   for i = 0, 9, 1 do
     if PlayerResource:GetPlayer(i) ~= nil then
       player = PlayerResource:GetPlayer(i)
+      local hero = player:GetAssignedHero()
+      if hero == nil or hero:IsNull() then
       local team = player:GetTeamNumber() 
       print("team ".. team)
       if team == 3 then 
@@ -204,6 +222,7 @@ function NinjaClaasicGameMode:CreateHeroes()
       end
       hero:SetHasInventory( false )
     end
+  end
   end
   print("CreateHeroes")
 end

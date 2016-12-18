@@ -9,12 +9,12 @@
 	"npc_dota_hero_juggernaut"
 	{
 		"override_hero"				"npc_dota_hero_juggernaut"			// Hero to override
-		// "Ability1"					"refraction_gold"		// Ability 1
-		// "Ability2"					"blink_gold"		// Ability 2
-		// "Ability3"					"shockwave_gold"		// Ability 3	
-		// "Ability4"					"stone_remnant_gold"		// Ability 4
-		// "Ability5"					"blood_spatter"		// Ability 5
-		// "Ability6"					"dagger_throw_gold"		// Ability 6
+		// "Ability1"					""		// Ability 1
+		// "Ability2"					""		// Ability 2
+		// "Ability3"					""		// Ability 3	
+		// "Ability4"					""		// Ability 4
+		// "Ability5"					""		// Ability 5
+		// "Ability6"					"blood_spatter"		// Ability 6
 		"Ability7"					"on_respawn_protect"
 		"Ability8"					""		// Ability 6 
 		"VisionNighttimeRange"		"1600"										// Range of vision at night time.
@@ -46,12 +46,12 @@
 	"npc_dota_hero_phantom_assassin"
 	{
 		"override_hero"				"npc_dota_hero_phantom_assassin"			// Hero to override
-		// "Ability1"					"refraction"		// Ability 1
-		// "Ability2"					"blink"		// Ability 2
-		// "Ability3"					"shockwave"		// Ability 3	
-		// "Ability4"					"stone_remnant"		// Ability 4
-		// "Ability5"					"blood_spatter"		// Ability 5
-		// "Ability6"					"dagger_throw"		// Ability 6
+		// "Ability1"					""		// Ability 1
+		// "Ability2"					""		// Ability 2
+		// "Ability3"					""		// Ability 3	
+		// "Ability4"					""		// Ability 4
+		// "Ability5"					""		// Ability 5
+		// "Ability6"					"blood_spatter"		// Ability 6
 		"Ability7"					"on_respawn_protect"
 		"Ability8"					""		// Ability 6 
 		"VisionNighttimeRange"		"1600"										// Range of vision at night time.

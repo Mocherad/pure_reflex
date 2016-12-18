@@ -386,6 +386,125 @@
 			}
 		}
 	}
+	//=================================================================================================================
+	// Stone Remnant Hephaestus
+	//=================================================================================================================
+	"stone_remnant_hephaestus"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"MaxLevel"						"1"
+		"AbilityTextureName" 			"stone_remnant_hephaestus"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"12.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+
+			"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"6"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"ultimate"				"1"
+			}
+		}
+		
+		"OnSpellStart"
+		{	
+			"FireSound"
+			{
+			"EffectName"			"Hero_EarthSpirit.StoneRemnant.Impact"
+			}
+			"ApplyModifier"
+			{
+			"ModifierName"	"modifier_stone_remnant_active"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+			}			
+		}
+		
+		"Modifiers"
+		{
+		  "modifier_stone_remnant_active"
+			{
+				"IsHidden"				"1"
+				"Passive"				"0"
+				"Duration"				"6"
+				"Debuff"				"1"
+
+				"StatusEffectName"     "particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
+				"StatusEffectPriority" "10"
+							
+				"EffectName"		"particles/stone_remnant/stone_remnant.vpcf"
+				"EffectAttachType"	"follow_origin"
+							
+				"OnAbilityExecuted"
+				 {
+				   "RemoveModifier"
+					 {
+					"Target"		"CASTER"
+					"ModifierName"	"modifier_stone_remnant_active"
+					 }				
+				}
+
+				"OnUnitMoved"
+				{
+				   "RemoveModifier"
+					 {
+					"Target"		"CASTER"
+					"ModifierName"	"modifier_stone_remnant_active"
+					 }		
+
+				}
+
+			   "OnDestroy"
+			   {
+			 		"FireSound"
+					{
+					"EffectName"			"Hero_EarthSpirit.StoneRemnant.Destroy"
+					}
+				
+			   }
+
+			   "OnTakeDamage"
+			   {
+				
+			   }
+
+			   "States"
+				{
+				"MODIFIER_STATE_DISARMED" 						"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_SILENCED"					    "MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_FROZEN" 						"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_HEALTH_BAR"					"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NOT_ON_MINIMAP_FOR_ENEMIES"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+
+			   "Properties"
+				{
+				"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"	"1"
+				"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"	"1"
+				"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"		"1"
+				}
+					 	
+			}
+		}
+	}
 //=================================================================================================================
 // On status check
 //=================================================================================================================
@@ -400,7 +519,7 @@
    
 	"Modifiers"
     {
-      "modifier_golden"
+      "modifier_hephaestus"
       {
         "IsHidden"        "1"
         "Passive"         "0"
@@ -627,6 +746,107 @@
 		}
 		
 	}
+	//=================================================================================================================
+	// Refraction
+	//=================================================================================================================
+	"refraction_hephaestus"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"MaxLevel"						"1"
+		"AbilityTextureName" "refraction_hephaestus"
+		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"2.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+
+			"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"0.7"
+			}
+		}
+		
+		"OnSpellStart"
+		{	
+			"ApplyModifier"
+			{
+				"ModifierName" 			"refraction_hephaestus_modifier"
+				"Target" "CASTER"
+			}
+			
+			"FireSound"
+			{
+				"EffectName"			"Hero_TemplarAssassin.Refraction"
+			}
+		}
+
+		"OnProjectileHitUnit"
+		{
+			"RunScript"
+				{
+				"ScriptFile"   "scripts/vscripts/spells/return.lua"
+				"Function"     "on_hit"
+				}
+		}
+		
+		"Modifiers"
+		{
+			"refraction_hephaestus_modifier"
+			{
+				"Duration" "0.7"
+				"OnTakeDamage"
+				{
+					"RunScript"
+					{
+					"ScriptFile"   "scripts/vscripts/spells/return.lua"
+					"Function"     "return_n"
+					}
+				}
+					"OnCreated"
+					{
+						"AttachEffect"
+						{
+						"Target" 					"CASTER"
+						"EffectName"			    "particles/refraction_hephaestus/refraction_hephaestus.vpcf"
+						"EffectAttachType" 			"follow_origin"
+						"EffectLifeDurationScale" 	"1"
+							"ControlPointEntities"
+							{
+							"CASTER"    "attach_origin" // Control Point 0
+							"CASTER"    "attach_origin" // Control Point 1
+							}
+						}
+					}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"	"1"
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"	"1"
+				}   	
+			}
+			"modifier_stifling_dagger"
+			{
+				"IsDebuff"	"1"
+				"Duration"	"0.1"
+
+			}
+		}
+		
+	}
 	"shockwave"
 	{
 		// General
@@ -729,6 +949,61 @@
 			"RunScript"
 			{    
 				"ScriptFile"			"scripts/vscripts/spells/shockwave_gold.lua"
+				"Function"				"shockwave"
+				"Target"				"POINT"
+			}
+
+			
+		}
+
+	}
+
+"shockwave_hephaestus"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"shockwave_hephaestus"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK_EVENT"
+		"MaxLevel"						"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"1200"
+		"AbilityCastPoint"				"0.15"
+		"AnimationPlaybackRate" 		"1.2"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"2.0"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+
+			"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"speed"					"1900"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"range"					"1200"
+			}
+		}
+
+
+		"OnSpellStart"
+		{
+		
+			"RunScript"
+			{    
+				"ScriptFile"			"scripts/vscripts/spells/hephaestus/shockwave_hephaestus.lua"
 				"Function"				"shockwave"
 				"Target"				"POINT"
 			}
@@ -1053,6 +1328,109 @@
 		}
 	}
 }
+
+"blink_hephaestus"
+	{
+
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityTextureName"			"blink_hephaestus"
+	"MaxLevel"						"1"
+
+	// Precache
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"particle"			"particles/econ/events/ti5/blink_dagger_start_ti5.vpcf"
+		"particle"			"particles/econ/events/ti5/blink_dagger_end_lvl2_ti5.vpcf"
+	}
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0.12"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"4"
+	
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"0"
+	
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"range"					"700"
+		}
+		
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"min_blink_range"		"1"
+		}
+	}
+
+
+	 "Modifiers"
+    {
+      "modifier_injump"
+      {
+        "IsHidden"        "1"
+        "Passive"      	  "0"
+        "Duration"        "0.5"
+      }
+    }
+
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/spells/blink.lua"
+			"Function"		"Blink"
+			"Target"		"POINT"
+		}
+
+		"ApplyModifier"
+		{
+			"ModifierName"		"modifier_injump"
+			"Target"			"CASTER"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_QueenOfPain.Blink_out"
+			"Target"		"CASTER"
+		}
+
+		"AttachEffect"
+		{
+			"EffectName"	"particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf"
+			"Target"		"CASTER"
+			"EffectAttachType"	"attach_hitloc"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_QueenOfPain.Blink_in"
+			"Target"		"CASTER"
+		}
+
+		"AttachEffect"
+		{
+			"EffectName"	"particles/econ/events/ti5/blink_dagger_end_lvl2_ti5.vpcf"
+			"Target"		"CASTER"
+			"EffectAttachType"	"follow_origin"
+		}
+	}
+}
 	
 	
 	"dagger_throw"
@@ -1257,6 +1635,137 @@
 			{
 				"Target"           "TARGET"
 			    "EffectName"       "particles/units/heroes/hero_phantom_assassin/phantom_assassin_stifling_dagger.vpcf"
+			    "Dodgeable"        "1"
+			    "ProvidesVision"   "0"
+			    "VisionRadius"     "0"
+			    "MoveSpeed"        "%speed"
+			    "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+			}
+	
+			"FireSound"
+			{
+				"EffectName"		"Hero_PhantomAssassin.Dagger.Cast"
+				"Target"			"CASTER"
+			}
+		}
+	
+		"OnProjectileHitUnit"
+		{
+		"ApplyModifier"
+			{
+				"ModifierName"		"modifier_stifling_dagger"
+				"Target"			"TARGET"
+			}
+
+			"Damage"
+			{
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Types"		"DOTA_UNIT_TARGET_HERO"
+				}
+				"Type"			"DAMAGE_TYPE_PHYSICAL"
+				"Damage"		"10000"
+			}
+	
+	
+			"FireSound"
+			{
+				"EffectName"		"Hero_PhantomAssassin.Dagger.Target"
+				"Target"			"TARGET"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName"		"modifier_stifling_dagger"
+				"Target"			"TARGET"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_stifling_dagger"
+			{
+				"IsDebuff"	"1"
+				"Duration"	"0.1"
+			}
+		}
+	}
+"dagger_throw_hephaestus"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityType" "DOTA_ABILITY_TYPE_ULTIMATE"
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityTextureName"			"dagger_throw_hephaestus"
+		"MaxLevel"						"1"
+	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+			"particle"			"particles/units/heroes/hero_phantom_assassin/phantom_assassin_stifling_dagger.vpcf"
+			"particle"			"particles/units/heroes/hero_phantom_assassin/phantom_assassin_stifling_dagger_debuff.vpcf"
+		}
+	
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"1200"
+		"AbilityCastPoint"				"0.2"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"5"
+		"AbilityDuration"				"3.0"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+		
+			
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"move_slow"				"0"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"speed"					"1200"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"0"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"hero_dmg_pct"			"1000"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"range"					"1200"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"TrackingProjectile"
+			{
+				"Target"           "TARGET"
+			    "EffectName"       "particles/dagger_hephaestus/dagger_hephaestus.vpcf"
 			    "Dodgeable"        "1"
 			    "ProvidesVision"   "0"
 			    "VisionRadius"     "0"

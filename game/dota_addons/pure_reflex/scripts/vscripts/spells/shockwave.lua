@@ -8,8 +8,10 @@ print(random)
   local injump_speed = 1
   local injump_distance = 1
   local sound = "Hero_Magnataur.ShockWave.Cast"
+  local particle = "particles/shockwave/shockwave.vpcf"
   if caster:HasModifier("modifier_injump") then
-  sound = "Hero_Axe.CounterHelix_Blood_Chaser"
+  sound = "Hero_Magnataur.ShockWave.Particle.Anvil"
+  particle = "particles/deadwave/deadwave.vpcf"
   injump_speed = 470
   injump_distance = 300
   end
@@ -40,7 +42,7 @@ print(random)
 
 
 local projectile = {
-  EffectName = "particles/shockwave/shockwave.vpcf",
+  EffectName = particle,
   vSpawnOrigin = {unit=caster, attach="attach_attack1", offset=Vector(0,0,-40)},
   fDistance = 1200 + injump_distance,
   fStartRadius = 120,
