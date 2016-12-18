@@ -294,9 +294,9 @@ function NinjaClaasicGameMode:Time ()
             for i = 0, 9, 1 do
               player = PlayerResource:GetPlayer(i)
               if PlayerResource:GetPlayer(i) ~= nil and player:GetAssignedHero() then
-              local hero = player:GetAssignedHero()
-              hero:AddNewModifier(hero, nil, "modifier_invulnerable", { duration = 6 })
-              hero:AddNewModifier(hero, nil, "modifier_stunned", { duration = 6 })
+                local hero = player:GetAssignedHero()
+                hero:AddNewModifier(hero, nil, "modifier_invulnerable", { duration = 6 })
+                hero:AddNewModifier(hero, nil, "modifier_stunned", { duration = 6 })
               end 
             end 
           Notifications:ClearTopFromAll()
@@ -304,6 +304,8 @@ function NinjaClaasicGameMode:Time ()
           GameRules:GetGameModeEntity():SetThink("Respawn", self, 6)
           GameMode:SetTopBarTeamValue ( DOTA_TEAM_BADGUYS, badGuysScore)
           GameMode:SetTopBarTeamValue ( DOTA_TEAM_GOODGUYS, goodGuysScore )
+          CustomGameEventManager:Send_ServerToAllClients("update_score",{badGuysScore = badGuysScore, goodGuysScore = goodGuysScore})
+          print("Asdasdasdas")
           roundGoing = false 
         end
     end
@@ -497,6 +499,7 @@ function NinjaClaasicGameMode:EndRoundCheck()
     Notifications:TopToAll({text="#Wins", style=GameRules.styles.rounds, continue=true })
 		GameMode:SetTopBarTeamValue ( DOTA_TEAM_BADGUYS, badGuysScore)
 		GameMode:SetTopBarTeamValue ( DOTA_TEAM_GOODGUYS, goodGuysScore )
+    CustomGameEventManager:Send_ServerToAllClients("update_score",{badGuysScore = badGuysScore, goodGuysScore = goodGuysScore})
 		roundGoing = false
 			if goodGuysScore == ROUNDS then
 				NinjaClaasicGameMode:GoodGuysVictory()
@@ -517,6 +520,7 @@ function NinjaClaasicGameMode:EndRoundCheck()
       Notifications:TopToAll({text="#Wins", style=GameRules.styles.rounds, continue=true })
 			GameMode:SetTopBarTeamValue ( DOTA_TEAM_BADGUYS, badGuysScore)
 			GameMode:SetTopBarTeamValue ( DOTA_TEAM_GOODGUYS, goodGuysScore )
+      CustomGameEventManager:Send_ServerToAllClients("update_score",{badGuysScore = badGuysScore, goodGuysScore = goodGuysScore})
 			roundGoing = false
 			if badGuysScore == ROUNDS then
 				NinjaClaasicGameMode:BadGuysVictory()
@@ -535,6 +539,7 @@ function NinjaClaasicGameMode:EndRoundCheck()
 			GameRules:GetGameModeEntity():SetThink("Respawn", self, 5)
 			GameMode:SetTopBarTeamValue ( DOTA_TEAM_BADGUYS, badGuysScore)
 			GameMode:SetTopBarTeamValue ( DOTA_TEAM_GOODGUYS, goodGuysScore )
+      CustomGameEventManager:Send_ServerToAllClients("update_score",{badGuysScore = badGuysScore, goodGuysScore = goodGuysScore})
 			roundGoing = false
 		end
 	end

@@ -72,7 +72,46 @@ function UpdateAbilityList()
 	GameEvents.Subscribe( "dota_player_update_query_unit", UpdateAbilityList );
 	GameEvents.Subscribe( "dota_ability_changed", UpdateAbilityList );
 	GameEvents.Subscribe( "dota_hero_ability_points_changed", UpdateAbilityList );
-	
+
+    var parent = $.GetContextPanel().GetParent();
+    while(parent.id != "Hud")
+        parent = parent.GetParent();
+
+    var dire = parent.FindChildTraverse("TopBarDireScore");
+    dire.visible = false;
+    var radiant = parent.FindChildTraverse("TopBarRadiantScore");
+    radiant.visible = false;
+
+    dire = $.CreatePanel("Label", dire.GetParent(), "ScoreDire");
+    radiant = $.CreatePanel("Label", radiant.GetParent(), "ScoreRadiant");
+
+    dire.GetParent().MoveChildAfter(dire, parent.FindChildTraverse("TopBarDireScore"))
+
+    radiant.style.horizontalAlign = "left;";
+    radiant.style.marginLeft = "4px;";
+
+    dire.style.horizontalAlign = "right;";
+    dire.style.marginRight = "4px;";
+
+    radiant.style.color = dire.style.color = "white;";
+    radiant.style.fontSize = dire.style.fontSize = "22px;";
+    radiant.style.fontWeight = dire.style.fontWeight = "bold;";
+    radiant.style.fontFamily = dire.style.fontFamily = "RadianceM;";
+    radiant.style.height = dire.style.height = "38px;";
+    radiant.style.width = dire.style.width = "50px;";
+    radiant.style.textAlign = dire.style.textAlign = "center;";
+    radiant.style.marginTop = dire.style.marginTop = "7px;";
+    radiant.style.zIndex = dire.style.zIndex = "5;";
+
+    dire.text = "0";
+    radiant.text = "0";
+
+    GameEvents.Subscribe( "update_score", function (args) {
+    	$.Msg(args);
+	    dire.text = args.badGuysScore;
+	    radiant.text = args.goodGuysScore;
+    } );
+
 	UpdateAbilityList(); // initial update
 })();
 
