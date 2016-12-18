@@ -264,12 +264,14 @@ function NinjaClaasicGameMode:CreateHero(i, hero)
             newHero = PlayerResource:ReplaceHeroWith(i,"npc_dota_hero_phantom_assassin",0,0)
             NinjaClaasicGameMode:InitHero(newHero)
             newHero:SetHasInventory( false )
+            UTIL_Remove(hero)
           end, i)
         else
           PrecacheUnitByNameAsync("npc_dota_hero_juggernaut", function() 
             newHero = PlayerResource:ReplaceHeroWith(i,"npc_dota_hero_juggernaut",0,0)
             NinjaClaasicGameMode:InitHero(newHero)
             newHero:SetHasInventory( false )
+            UTIL_Remove(hero)
           end, i)
         end
       end
