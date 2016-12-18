@@ -14,6 +14,18 @@ RANDOM_SKILLS = false
 ANOMALIES = false
 ROUNDS = 12
 
+TEAM_COLORS = {}                        -- If USE_CUSTOM_TEAM_COLORS is set, use these colors.
+TEAM_COLORS[DOTA_TEAM_GOODGUYS] = { 61, 210, 150 }  --    Teal
+TEAM_COLORS[DOTA_TEAM_BADGUYS]  = { 243, 201, 9 }   --    Yellow
+TEAM_COLORS[DOTA_TEAM_CUSTOM_1] = { 197, 77, 168 }  --    Pink
+TEAM_COLORS[DOTA_TEAM_CUSTOM_2] = { 255, 108, 0 }   --    Orange
+TEAM_COLORS[DOTA_TEAM_CUSTOM_3] = { 52, 85, 255 }   --    Blue
+TEAM_COLORS[DOTA_TEAM_CUSTOM_4] = { 101, 212, 19 }  --    Green
+TEAM_COLORS[DOTA_TEAM_CUSTOM_5] = { 129, 83, 54 }   --    Brown
+TEAM_COLORS[DOTA_TEAM_CUSTOM_6] = { 27, 192, 216 }  --    Cyan
+TEAM_COLORS[DOTA_TEAM_CUSTOM_7] = { 199, 228, 13 }  --    Olive
+TEAM_COLORS[DOTA_TEAM_CUSTOM_8] = { 140, 42, 244 }  --    Purple
+
 local noData = true
 
 function Precache( context )
@@ -71,6 +83,7 @@ end
 
 -- Create the game mode when we activate
 function Activate()
+  SendToServerConsole( 'dota_create_fake_clients 3' )
   GameRules.AddonTemplate = NinjaClaasicGameMode()
   GameRules.AddonTemplate:InitGameMode()
   print("mod activeted")
@@ -179,6 +192,21 @@ function NinjaClaasicGameMode:FinishGameSetup(args)
   print(ROUNDS)
 
   noData = false
+  local s = 3
+  for pID = 0, DOTA_MAX_PLAYERS do
+    if PlayerResource:IsValidPlayerID(pID) then
+      if not PlayerResource:IsBroadcaster(pID) then
+        if PlayerResource:GetConnectionState(pID) >= 1 then
+          if s == 2 then
+            s = 3
+          else
+            s = 2
+          end
+          PlayerResource:GetPlayer(pID):SetTeam(s)
+        end
+      end
+    end
+  end
 
   GameRules:FinishCustomGameSetup()
   
