@@ -6,6 +6,20 @@
 	//=================================================================================================================
 	// HERO: Juggernaut
 	//=================================================================================================================
+	"npc_dota_hero_wisp"
+	{
+		"override_hero"				"npc_dota_hero_wisp"			// Hero to override
+		"Model" "models/development/invisiblebox.vmdl"
+		// "Ability1"					""		// Ability 1
+		// "Ability2"					""		// Ability 2
+		// "Ability3"					""		// Ability 3	
+		// "Ability4"					""		// Ability 4
+		// "Ability5"					""		// Ability 5
+		// "Ability6"					"blood_spatter"		// Ability 6	
+	}
+	//=================================================================================================================
+	// HERO: Juggernaut
+	//=================================================================================================================
 	"npc_dota_hero_juggernaut"
 	{
 		"override_hero"				"npc_dota_hero_juggernaut"			// Hero to override

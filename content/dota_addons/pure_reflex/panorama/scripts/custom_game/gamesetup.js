@@ -131,9 +131,11 @@ function OnDropDownChanged() {
 		})();
 	}
 
-	$("#PlayButton").SetPanelEvent("onactivate", (function () {
 		Game.ShufflePlayerTeamAssignments();
 		Game.AutoAssignPlayersToTeams();
+
+	$("#PlayButton").SetPanelEvent("onactivate", (function () {
+
 		var gameTable = {};
 		for (var i = 0; i < 5; i++) {
 			gameTable[i.toString()] = $("#Abilities").FindChildTraverse("AbilitySlot" + i).FindChildTraverse("AbilityImage").abilityname;

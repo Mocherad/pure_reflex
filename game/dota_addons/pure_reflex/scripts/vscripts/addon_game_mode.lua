@@ -130,12 +130,27 @@ function NinjaClaasicGameMode:InitGameMode()
   ListenToGameEvent('player_disconnect', Dynamic_Wrap(NinjaClaasicGameMode, 'OnDisconnect'), self)
   ListenToGameEvent("game_rules_state_change", Dynamic_Wrap(NinjaClaasicGameMode, 'OnGameRulesStateChange'), self)
   ListenToGameEvent("player_reconnected", Dynamic_Wrap(NinjaClaasicGameMode, 'OnPlayerReconnected'), self)
+  ListenToGameEvent('npc_spawned', Dynamic_Wrap(NinjaClaasicGameMode, 'OnNPCSpawned'), self)
 
   -- ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(NinjaClaasicGameMode, 'CreateHeroes'), self)
 
   self.vUserIds = {}
   self.splIds = {}
   print("mod inited")
+end
+
+function NinjaClaasicGameMode:OnNPCSpawned(keys)
+  local npc = EntIndexToHScript(keys.entindex)
+
+  if npc:IsRealHero() and npc.bFirstSpawned == nil then
+    npc.bFirstSpawned = true
+    NinjaClaasicGameMode.spawnedArray = NinjaClaasicGameMode.spawnedArray or {}
+
+    if not NinjaClaasicGameMode.spawnedArray[npc:GetPlayerOwnerID()] then
+      NinjaClaasicGameMode:CreateHero(npc:GetPlayerOwnerID(), npc)
+      NinjaClaasicGameMode.spawnedArray[npc:GetPlayerOwnerID()] = true
+    end
+  end
 end
 
 function NinjaClaasicGameMode:UpdateSkill(args)
@@ -146,7 +161,7 @@ function NinjaClaasicGameMode:UpdateSkill(args)
 end
 
 function NinjaClaasicGameMode:FinishGameSetup(args)
-
+  GameRules:LockCustomGameSetupTeamAssignment( true )
   for i=0,5 do
     table.insert(BUILD, args[tostring(i)])
   end
@@ -166,11 +181,6 @@ function NinjaClaasicGameMode:FinishGameSetup(args)
   noData = false
 
   GameRules:FinishCustomGameSetup()
-
-  Timers:CreateTimer(0.3, function (  )
-    NinjaClaasicGameMode:CreateHeroes()
-  end)
-
   
     print("FinishGameSetup")
 end
@@ -209,31 +219,33 @@ function NinjaClaasicGameMode:InitHero(hero)
 print("InitHero")
 end
 
-function NinjaClaasicGameMode:CreateHeroes()
+function NinjaClaasicGameMode:CreateHero(i, hero)
   --print("Game State Changed: " .. GameRules:State_Get())
   --print("Hero Selection State: " .. DOTA_GAMERULES_STATE_HERO_SELECTION)
   -- if GameRules:State_Get() == 3 then
   -- print("Entered IF")
-  for i = 0, 9, 1 do
     if PlayerResource:GetPlayer(i) ~= nil then
       player = PlayerResource:GetPlayer(i)
-      local hero = player:GetAssignedHero()
       if hero:GetUnitName() == "npc_dota_hero_wisp" then
         local team = player:GetTeamNumber() 
         print("team ".. team)
-        UTIL_Remove(hero)
+        -- UTIL_Remove(hero)
+        local newHero
         if team == 3 then 
-          hero = PlayerResource:ReplaceHeroWith(i,'npc_dota_hero_phantom_assassin',0,0)
-          NinjaClaasicGameMode:InitHero(hero)
+          PrecacheUnitByNameAsync("npc_dota_hero_phantom_assassin", function() 
+            newHero = PlayerResource:ReplaceHeroWith(i,"npc_dota_hero_phantom_assassin",0,0)
+            NinjaClaasicGameMode:InitHero(newHero)
+            newHero:SetHasInventory( false )
+          end, i)
         else
-          hero = PlayerResource:ReplaceHeroWith(i,'npc_dota_hero_juggernaut',0,0)
-          NinjaClaasicGameMode:InitHero(hero)
+          PrecacheUnitByNameAsync("npc_dota_hero_juggernaut", function() 
+            newHero = PlayerResource:ReplaceHeroWith(i,"npc_dota_hero_juggernaut",0,0)
+            NinjaClaasicGameMode:InitHero(newHero)
+            newHero:SetHasInventory( false )
+          end, i)
         end
-        hero:SetHasInventory( false )
       end
     end
-  end
-  print("CreateHeroes")
 end
 
 function NinjaClaasicGameMode:GameStartMusic ()
